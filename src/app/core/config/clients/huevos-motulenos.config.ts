@@ -265,20 +265,6 @@ export const HUEVOS_MOTULENOS_CONFIG: BusinessConfig = {
         image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&auto=format&fit=crop&q=80',
         tag: 'Zona norte',
       },
-      {
-        id: 'santa-ana',
-        name: 'Santa Ana',
-        address: 'Col. Santa Ana, Mérida',
-        neighborhood: 'Santa Ana',
-        city: 'Mérida, Yucatán',
-        phone: '+52 999 XXX XXXX',
-        hours: [
-          { day: 'Lun – Dom', hours: '7:30am – 3:00pm' },
-        ],
-        googleMapsUrl: 'https://maps.google.com/?q=Huevos+Motulenos+y+Mas+Santa+Ana+Merida',
-        image: 'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=700&auto=format&fit=crop&q=80',
-        tag: 'Centro',
-      },
     ],
   },
 
