@@ -66,7 +66,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       align-items: end;
       overflow: clip;
       border-radius: clamp(1.5rem, 2.8vw, 2.4rem);
-      background: linear-gradient(180deg, rgba(250,247,241,0.35), rgba(250,247,241,0.96));
+      background: linear-gradient(180deg, color-mix(in oklch, var(--color-bg), transparent 68%), var(--color-bg));
       box-shadow: 0 30px 80px rgba(79,57,37,.13);
     }
     .hero-media {
@@ -80,8 +80,8 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(250,247,241,.48) 48%, rgba(250,247,241,.94) 100%),
-        linear-gradient(90deg, rgba(255,255,255,.64) 0%, rgba(255,255,255,.18) 58%, rgba(255,255,255,.34) 100%);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-bg), transparent 88%) 0%, color-mix(in oklch, var(--color-bg), transparent 54%) 48%, color-mix(in oklch, var(--color-bg), transparent 10%) 100%),
+        linear-gradient(90deg, color-mix(in oklch, var(--color-bg), transparent 18%) 0%, color-mix(in oklch, var(--color-bg), transparent 76%) 58%, color-mix(in oklch, var(--color-bg), transparent 48%) 100%);
     }
     .hero-shell {
       position: relative;
@@ -99,28 +99,28 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       border-radius: clamp(1.25rem, 2vw, 1.8rem);
       backdrop-filter: blur(16px) saturate(1.08);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,252,248,.56)),
+        linear-gradient(135deg, color-mix(in oklch, var(--color-surface), transparent 16%), color-mix(in oklch, var(--color-surface-2), transparent 30%)),
         color-mix(in oklch, var(--color-surface), transparent 20%);
-      border: 1px solid rgba(92,64,51,.10);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
       box-shadow: 0 22px 70px rgba(79,57,37,.14);
     }
     .hero-title {
       font-size: clamp(3rem, 7vw, 6rem);
       line-height: .95;
       letter-spacing: -0.03em;
-      color: var(--color-ink-900);
+      color: var(--color-text);
       margin-top: .5rem;
     }
     .hero-title em {
       font-style: italic;
-      color: var(--color-brand-700);
+      color: var(--color-primary);
       font-weight: 500;
     }
     .hero-subtitle {
       max-width: 40rem;
       margin-top: 1rem;
       font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--color-ink-700);
+      color: var(--color-text-muted);
     }
     .hero-actions {
       display:flex;
@@ -137,9 +137,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     .hero-pill {
       padding: .62rem .9rem;
       border-radius: 999px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(92,64,51,.08);
-      color: var(--color-ink-700);
+      background: color-mix(in oklch, var(--color-surface), transparent 10%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
+      color: var(--color-text-muted);
       font-size: .88rem;
       font-weight: 600;
     }
@@ -151,25 +151,25 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       max-width: 22rem;
       padding: 1.35rem;
       border-radius: 1.35rem;
-      background: linear-gradient(160deg, rgba(255,250,245,.96), rgba(255,255,255,.76));
+      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
       box-shadow: 0 20px 54px rgba(79,57,37,.14);
-      border: 1px solid rgba(92,64,51,.08);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
     }
     .spotlight-kicker {
       font-size:.78rem;
       text-transform:uppercase;
       letter-spacing:.14em;
-      color: var(--color-ink-500);
+      color: var(--color-text-muted);
     }
     .spotlight-title {
       margin-top:.45rem;
       font-size:1.35rem;
       line-height:1.08;
-      color: var(--color-ink-900);
+      color: var(--color-text);
     }
     .spotlight-text {
       margin-top:.75rem;
-      color: var(--color-ink-700);
+      color: var(--color-text-muted);
       font-size:.95rem;
     }
     .hero-scroll-cue {
@@ -183,9 +183,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       gap:.5rem;
       padding:.65rem .9rem;
       border-radius:999px;
-      background: rgba(255,255,255,.72);
-      border:1px solid rgba(92,64,51,.08);
-      color: var(--color-ink-700);
+      background: color-mix(in oklch, var(--color-surface), transparent 18%);
+      border:1px solid color-mix(in oklch, var(--color-border), transparent 35%);
+      color: var(--color-text-muted);
       backdrop-filter: blur(8px);
     }
     @media (max-width: 900px) {

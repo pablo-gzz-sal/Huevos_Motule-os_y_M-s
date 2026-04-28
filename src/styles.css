@@ -148,7 +148,7 @@ p, li { text-wrap: pretty; }
   .aspect-portrait { aspect-ratio: 3 / 4; }
   .center-rail { width: min(calc(100% - clamp(1rem, 5vw, 4rem)), var(--page-rail)); margin-inline: auto; }
   .glass-panel {
-    background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,250,244,.68));
+    background: linear-gradient(145deg, color-mix(in oklch, var(--color-surface), transparent 14%), color-mix(in oklch, var(--color-surface-2), transparent 28%));
     border: 1px solid color-mix(in oklch, var(--color-border), transparent 24%);
     box-shadow: 0 22px 64px rgba(79,57,37,.09);
     backdrop-filter: blur(16px) saturate(1.08);
@@ -239,7 +239,7 @@ p, li { text-wrap: pretty; }
   .testimonial-card,
   .contact-card,
   .gallery-item {
-    background: linear-gradient(150deg, rgba(255,255,255,.9), rgba(255,250,244,.7));
+    background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 10%), color-mix(in oklch, var(--color-surface-2), transparent 26%));
     border: 1px solid color-mix(in oklch, var(--color-border), transparent 24%);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
