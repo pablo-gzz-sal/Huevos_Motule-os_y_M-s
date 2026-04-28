@@ -61,13 +61,13 @@ import { RouterLink } from '@angular/router';
   styles: [`
     .menu-section {
       background:
-        linear-gradient(180deg, rgba(255,251,247,.98), rgba(250,247,241,.94)),
-        radial-gradient(circle at 85% 10%, rgba(176,128,78,.14), transparent 28rem);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-bg), transparent 6%)),
+        radial-gradient(circle at 85% 10%, color-mix(in oklch, var(--color-primary), transparent 84%), transparent 28rem);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 18px 60px rgba(79,57,37,.06);
     }
     .menu-shell { max-width: 1060px; }
     .menu-header { text-align: center; margin: 0 auto clamp(2rem, 4vw, 3rem); max-width: 48rem; }
-    .section-subtitle { color: var(--color-ink-700); max-width: 42rem; margin: .75rem auto 0; }
+    .section-subtitle { color: var(--color-text-muted); max-width: 42rem; margin: .75rem auto 0; }
     .menu-topbar { display: grid; gap: 1rem; margin: 0 auto clamp(1.75rem, 3vw, 2.5rem); max-width: 980px; }
     .cat-tabs {
       display: grid;
@@ -78,19 +78,19 @@ import { RouterLink } from '@angular/router';
       text-align: center;
       padding: 1.1rem 1.15rem 1.05rem;
       border-radius: 1rem;
-      border: 1px solid rgba(92,64,51,.08);
-      background: rgba(255,255,255,.72);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
+      background: color-mix(in oklch, var(--color-surface), transparent 16%);
       box-shadow: 0 10px 24px rgba(79,57,37,.05);
       transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
     }
     .cat-tab:hover { transform: translateY(-2px); }
     .cat-tab.active {
-      background: rgba(255,250,244,.96);
-      border-color: rgba(176,128,78,.28);
+      background: color-mix(in oklch, var(--color-surface-2), transparent 8%);
+      border-color: color-mix(in oklch, var(--color-primary), transparent 58%);
       box-shadow: 0 14px 32px rgba(79,57,37,.08);
     }
-    .cat-label { display:block; font-weight:700; color: var(--color-ink-900); }
-    .cat-tab small { display:block; margin-top:.3rem; color: var(--color-ink-500); font-size:.8rem; }
+    .cat-label { display:block; font-weight:700; color: var(--color-text); }
+    .cat-tab small { display:block; margin-top:.3rem; color: var(--color-text-muted); font-size:.8rem; }
     .menu-grid {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
@@ -101,8 +101,8 @@ import { RouterLink } from '@angular/router';
     .menu-card {
       overflow: hidden;
       border-radius: 1.15rem;
-      background: rgba(255,252,248,.95);
-      border: 1px solid rgba(92,64,51,.08);
+      background: color-mix(in oklch, var(--color-surface), transparent 4%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
       box-shadow: 0 18px 44px rgba(79,57,37,.08);
       transition: transform .28s ease, box-shadow .28s ease;
     }
@@ -113,14 +113,14 @@ import { RouterLink } from '@angular/router';
     .item-tag {
       position:absolute; top:1rem; left:1rem; padding:.4rem .7rem; border-radius:999px;
       font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-      background: rgba(255,255,255,.88); color: var(--color-ink-900);
+      background: color-mix(in oklch, var(--color-surface), transparent 8%); color: var(--color-text);
     }
-    .menu-card.featured { border-color: rgba(176,128,78,.26); }
+    .menu-card.featured { border-color: color-mix(in oklch, var(--color-primary), transparent 58%); }
     .menu-card-body { padding: 1rem 1rem 1.1rem; }
     .menu-card-row { display:flex; justify-content:space-between; gap:.75rem; align-items:start; }
-    .menu-item-name { font-family: var(--font-display); font-size: 1.45rem; line-height:1.05; color: var(--color-ink-900); }
-    .menu-item-desc { margin-top:.6rem; color: var(--color-ink-700); font-size:.95rem; line-height:1.6; }
-    .menu-item-price { color: var(--color-brand-700); font-weight:700; white-space:nowrap; }
+    .menu-item-name { font-family: var(--font-display); font-size: 1.45rem; line-height:1.05; color: var(--color-text); }
+    .menu-item-desc { margin-top:.6rem; color: var(--color-text-muted); font-size:.95rem; line-height:1.6; }
+    .menu-item-price { color: var(--color-primary); font-weight:700; white-space:nowrap; }
     .menu-cta-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:clamp(2.25rem, 4vw, 3.25rem); }
     @media (max-width: 768px) {
       .menu-header { text-align:center; }
