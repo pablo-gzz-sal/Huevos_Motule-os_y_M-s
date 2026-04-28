@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { MANJAR_BLANCO_CONFIG } from '../app/core/config/clients/manjar-blanco.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: MANJAR_BLANCO_CONFIG,
 };
