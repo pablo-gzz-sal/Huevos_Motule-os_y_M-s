@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="menu-topbar">
-          <div class="cat-tabs" role="tablist" aria-label="Categorías del menú">
+          <div class="cat-tabs" role="tablist" [attr.aria-label]="cfg.config().uiCopy.menuPageUi.categoryNavAriaLabel">
             @for (cat of categories(); track cat.id) {
               <button class="cat-tab" role="tab"
                 [class.active]="activeCategory() === cat.id"
@@ -35,7 +35,7 @@ import { RouterLink } from '@angular/router';
           @for (item of visibleItems(); track item.id) {
             <article class="menu-card" [class.featured]="item.featured">
               <div class="menu-card-img aspect-menu">
-                <img [src]="getItemImage(item.id)" [alt]="item.name + ' — ' + cfg.config().name" width="400" height="300" loading="lazy" />
+                <img [src]="getItemImage(item.id)" [alt]="item.name + ' - ' + cfg.config().name" width="400" height="300" loading="lazy" />
                 @if (item.tag) {
                   <span class="item-tag" [attr.data-tag]="item.tag">{{ tagLabel(item.tag) }}</span>
                 }
@@ -59,19 +59,25 @@ import { RouterLink } from '@angular/router';
     </section>
   `,
   styles: [`
-    .menu-section { background: linear-gradient(180deg, rgba(255,251,247,.96), rgba(250,247,241,.95)); }
-    .menu-header { text-align: left; margin-bottom: 2rem; }
-    .section-subtitle { color: var(--color-ink-700); max-width: 48rem; margin-top: .75rem; }
-    .menu-topbar { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+    .menu-section {
+      background:
+        linear-gradient(180deg, rgba(255,251,247,.98), rgba(250,247,241,.94)),
+        radial-gradient(circle at 85% 10%, rgba(176,128,78,.14), transparent 28rem);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 18px 60px rgba(79,57,37,.06);
+    }
+    .menu-shell { max-width: 1060px; }
+    .menu-header { text-align: center; margin: 0 auto clamp(2rem, 4vw, 3rem); max-width: 48rem; }
+    .section-subtitle { color: var(--color-ink-700); max-width: 42rem; margin: .75rem auto 0; }
+    .menu-topbar { display: grid; gap: 1rem; margin: 0 auto clamp(1.75rem, 3vw, 2.5rem); max-width: 980px; }
     .cat-tabs {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: .85rem;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: clamp(.9rem, 1.8vw, 1.2rem);
     }
     .cat-tab {
-      text-align: left;
-      padding: 1rem 1rem .95rem;
-      border-radius: 1.25rem;
+      text-align: center;
+      padding: 1.1rem 1.15rem 1.05rem;
+      border-radius: 1rem;
       border: 1px solid rgba(92,64,51,.08);
       background: rgba(255,255,255,.72);
       box-shadow: 0 10px 24px rgba(79,57,37,.05);
@@ -87,12 +93,14 @@ import { RouterLink } from '@angular/router';
     .cat-tab small { display:block; margin-top:.3rem; color: var(--color-ink-500); font-size:.8rem; }
     .menu-grid {
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: clamp(1.25rem, 2.4vw, 1.75rem);
+      max-width: 980px;
+      margin-inline: auto;
     }
     .menu-card {
       overflow: hidden;
-      border-radius: 1.5rem;
+      border-radius: 1.15rem;
       background: rgba(255,252,248,.95);
       border: 1px solid rgba(92,64,51,.08);
       box-shadow: 0 18px 44px rgba(79,57,37,.08);
@@ -107,15 +115,20 @@ import { RouterLink } from '@angular/router';
       font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
       background: rgba(255,255,255,.88); color: var(--color-ink-900);
     }
+    .menu-card.featured { border-color: rgba(176,128,78,.26); }
     .menu-card-body { padding: 1rem 1rem 1.1rem; }
     .menu-card-row { display:flex; justify-content:space-between; gap:.75rem; align-items:start; }
     .menu-item-name { font-family: var(--font-display); font-size: 1.45rem; line-height:1.05; color: var(--color-ink-900); }
     .menu-item-desc { margin-top:.6rem; color: var(--color-ink-700); font-size:.95rem; line-height:1.6; }
     .menu-item-price { color: var(--color-brand-700); font-weight:700; white-space:nowrap; }
-    .menu-cta-row { display:flex; flex-wrap:wrap; gap:.85rem; justify-content:center; margin-top:2rem; }
+    .menu-cta-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:clamp(2.25rem, 4vw, 3.25rem); }
     @media (max-width: 768px) {
       .menu-header { text-align:center; }
       .cat-tabs { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .cat-tabs { grid-template-columns: 1fr; }
+      .menu-cta-row .btn { width: 100%; }
     }
   `],
 })

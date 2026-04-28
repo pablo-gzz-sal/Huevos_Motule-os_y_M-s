@@ -7,8 +7,8 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
   standalone: true,
   template: `
     @if (visible()) {
-      <div class="sticky-cta" role="complementary" aria-label="Reserva rápida">
-        <button class="btn btn-cta" (click)="svc.open()" [attr.aria-label]="cfg.config().cta.reservationLabel + ' ahora'">
+      <div class="sticky-cta" role="complementary" [attr.aria-label]="cfg.cta().stickyLabel">
+        <button class="btn btn-cta" (click)="svc.open()" [attr.aria-label]="cfg.cta().stickyLabel">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                stroke-width="2" aria-hidden="true">
             <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -22,14 +22,24 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
   `,
   styles: [`
     .sticky-cta {
-      position: fixed; bottom: var(--space-6); right: var(--space-4); z-index: 50;
+      position: fixed; bottom: var(--space-6); right: clamp(var(--space-4), 3vw, var(--space-8)); z-index: 50;
       animation: slide-up 0.4s var(--ease-out-expo) both;
     }
     @keyframes slide-up {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .btn-cta { gap: var(--space-2); box-shadow: var(--shadow-lg); }
+    .btn-cta {
+      gap: var(--space-2);
+      min-height: 3.35rem;
+      padding-inline: clamp(1.65rem, 2.4vw, 2.25rem);
+      border-radius: var(--radius-full);
+      box-shadow: 0 18px 44px rgba(79,57,37,.18);
+    }
+    @media (max-width: 520px) {
+      .sticky-cta { left: var(--space-4); right: var(--space-4); bottom: var(--space-4); }
+      .btn-cta { width: 100%; }
+    }
   `],
 })
 export class StickyCTAComponent {

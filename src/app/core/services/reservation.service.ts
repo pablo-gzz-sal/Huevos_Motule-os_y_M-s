@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { BusinessConfigService } from './business-config.service';
 
 export interface ReservationForm {
@@ -14,7 +14,7 @@ export type ReservationState = 'idle' | 'open' | 'success';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
-  private readonly configSvc = new BusinessConfigService();
+  private readonly configSvc = inject(BusinessConfigService);
   readonly state   = signal<ReservationState>('idle');
   readonly preview = signal<string>('');
 
@@ -23,10 +23,12 @@ export class ReservationService {
 
   buildWhatsappMessage(form: ReservationForm, template: string): string {
     return template
-      .replace('{{name}}',   form.name)
-      .replace('{{date}}',   form.date)
-      .replace('{{time}}',   form.time)
-      .replace('{{guests}}', String(form.guests));
+      .replaceAll('{{name}}', form.name)
+      .replaceAll('{{phone}}', form.phone)
+      .replaceAll('{{date}}', form.date)
+      .replaceAll('{{time}}', form.time)
+      .replaceAll('{{guests}}', String(form.guests))
+      .replaceAll('{{notes}}', form.notes || 'Sin notas');
   }
 
   /** In mock mode: show success; in live mode: open WhatsApp deep-link */
@@ -39,8 +41,7 @@ export class ReservationService {
       return;
     }
     // Live: open WhatsApp deep link
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/${config.whatsappNumber}?text=${encoded}`, '_blank');
+    window.open(this.configSvc.whatsappUrl(msg, config.whatsappNumber), '_blank');
     this.state.set('success');
   }
 }

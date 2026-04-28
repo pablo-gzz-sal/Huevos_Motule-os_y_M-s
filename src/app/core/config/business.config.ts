@@ -7,6 +7,50 @@ export interface BrandTokens {
   darkMode: boolean;
 }
 
+export interface BusinessIdentity {
+  id: string;
+  name: string;
+  tagline: string;
+  category: 'restaurant' | 'bar' | 'cafe' | 'food-concept';
+  concept: string;
+}
+
+export interface ThemeTokens {
+  mode: 'light' | 'dark';
+  primary: string;
+  primaryHover: string;
+  accent: string;
+  cta: string;
+  background: string;
+  surface: string;
+  surfaceAlt: string;
+  border: string;
+  text: string;
+  textMuted: string;
+  textInverse: string;
+  fontDisplay: string;
+  fontBody: string;
+  radius: 'soft' | 'classic' | 'sharp';
+  shadow: 'low' | 'medium' | 'high';
+  motionIntensity: 'calm' | 'standard' | 'expressive';
+}
+
+export type HomeSectionId =
+  | 'hero'
+  | 'concept'
+  | 'menu-highlights'
+  | 'promotions'
+  | 'gallery'
+  | 'testimonials'
+  | 'branches'
+  | 'location';
+
+export interface HomeSectionConfig {
+  id: HomeSectionId;
+  enabled: boolean;
+  variant?: 'default' | 'compact' | 'editorial' | 'immersive';
+}
+
 export interface SeoConfig {
   title: string;
   description: string;
@@ -92,6 +136,8 @@ export interface ReservationConfig {
   mode: 'whatsapp' | 'form' | 'mock';
   maxGuests: number;
   minAdvanceHours: number;
+  timeSlots?: string[];
+  guestOptions?: number[];
   modalTitle: string;
   modalDescription: string;
   successTitle: string;
@@ -298,4 +344,7 @@ export interface BusinessConfig {
   social: SocialLinks;
   uiCopy: UiCopyConfig;
   branches?: BranchesSection;
+  identity?: BusinessIdentity;
+  theme?: ThemeTokens;
+  sections?: HomeSectionConfig[];
 }

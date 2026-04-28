@@ -29,21 +29,35 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     </section>
   `,
   styles: [`
-    .promotions-section { background: linear-gradient(180deg, rgba(255,252,248,.95), rgba(250,247,241,.9)); }
-    .promotions-header { text-align:left; max-width: 46rem; margin-bottom: 1.8rem; }
+    .promotions-section {
+      background:
+        linear-gradient(180deg, rgba(255,252,248,.95), rgba(250,247,241,.9)),
+        radial-gradient(circle at 15% 15%, rgba(114,74,42,.12), transparent 24rem);
+      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+    }
+    .promotions-header { text-align:center; max-width: 46rem; margin: 0 auto clamp(2rem, 4vw, 3rem); }
     .section-subtitle { margin-top:.7rem; color: var(--color-ink-700); }
-    .promotions-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .promotions-grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.15rem, 2.2vw, 1.65rem);
+      max-width: 980px;
+      margin-inline: auto;
+    }
     .promo-card {
-      padding: 1.25rem; border-radius: 1.45rem;
-      background: rgba(255,255,255,.82); border:1px solid rgba(92,64,51,.08);
+      padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: 1.1rem;
+      background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(255,248,240,.76));
+      border:1px solid rgba(92,64,51,.08);
       box-shadow: 0 16px 40px rgba(79,57,37,.07);
       transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
     }
+    .promo-card:hover,
+    .promo-card:focus-visible { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(79,57,37,.12); border-color: rgba(176,128,78,.24); }
     .promo-kicker { font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color: var(--color-ink-500); }
     .promo-title { margin-top:.55rem; font-family: var(--font-display); font-size: 1.55rem; line-height:1.04; color: var(--color-ink-900); }
     .promo-desc { margin-top:.7rem; color: var(--color-ink-700); line-height:1.65; }
     .promo-link { margin-top:1rem; color: var(--color-brand-700); font-weight:700; }
-    @media (max-width: 900px) { .promotions-grid { grid-template-columns: 1fr; } .promotions-header { text-align:center; } }
+    @media (max-width: 900px) { .promotions-grid { grid-template-columns: 1fr; max-width: 36rem; } .promotions-header { text-align:center; } }
   `],
 })
 export class PromotionsComponent implements OnInit {

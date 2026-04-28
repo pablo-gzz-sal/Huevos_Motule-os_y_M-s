@@ -27,6 +27,12 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       box-shadow: 0 8px 24px oklch(0.45 0.22 145 / 0.55);
     }
     .wa-fab:active { transform: scale(0.97); }
+    @media (max-width: 520px) {
+      .wa-fab {
+        bottom: calc(var(--space-4) + 4.4rem);
+        left: var(--space-4);
+      }
+    }
   `],
 })
 export class WhatsappButtonComponent {

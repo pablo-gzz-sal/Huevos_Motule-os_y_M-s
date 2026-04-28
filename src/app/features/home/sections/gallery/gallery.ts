@@ -37,7 +37,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
 
       @if (lightboxItem()) {
         <div class="gallery-lightbox" (click)="closeLightbox()" role="dialog" aria-modal="true" [attr.aria-label]="lightboxItem()?.alt">
-          <button class="lightbox-close" (click)="closeLightbox()" aria-label="Cerrar">×</button>
+          <button class="lightbox-close" (click)="closeLightbox()" aria-label="Cerrar">x</button>
           <img [src]="lightboxItem()?.src" [alt]="lightboxItem()?.alt" class="lightbox-img" (click)="$event.stopPropagation()" />
           @if (lightboxItem()?.caption) {
             <p class="lightbox-caption">{{ lightboxItem()?.caption }}</p>
@@ -47,28 +47,37 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
     </section>
   `,
   styles: [`
-    .gallery-section { background: linear-gradient(180deg, rgba(250,247,241,.72), rgba(255,252,248,.96)); }
-    .gallery-header { text-align:left; margin-bottom: 1.4rem; }
-    .gallery-filters { display:flex; flex-wrap:wrap; gap:.65rem; margin-bottom: 1.5rem; }
+    .gallery-section {
+      background:
+        linear-gradient(180deg, rgba(250,247,241,.72), rgba(255,252,248,.96)),
+        radial-gradient(circle at 80% 20%, rgba(176,128,78,.13), transparent 26rem);
+      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+    }
+    .gallery-header { text-align:center; margin: 0 auto clamp(1.5rem, 3vw, 2.25rem); max-width: 46rem; }
+    .gallery-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem; margin: 0 auto clamp(1.75rem, 3vw, 2.5rem); }
     .filter-btn {
-      padding:.7rem .95rem; border-radius:999px; background: rgba(255,255,255,.78);
+      padding:.75rem 1.25rem; border-radius:999px; background: rgba(255,255,255,.78);
       border:1px solid rgba(92,64,51,.08); color: var(--color-ink-700); font-weight:600;
     }
-    .filter-btn.active { background: var(--color-brand-600); color:white; border-color: var(--color-brand-600); }
+    .filter-btn.active { background: var(--color-primary); color:white; border-color: var(--color-primary); }
     .gallery-grid {
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
+      gap: clamp(1rem, 2vw, 1.5rem);
+      max-width: 1020px;
+      margin-inline: auto;
     }
     .gallery-item {
       grid-column: span 4;
       position:relative;
       overflow:hidden;
-      border-radius: 1.45rem;
+      border-radius: 1.1rem;
       cursor:pointer;
       min-height: 18rem;
       box-shadow: 0 18px 44px rgba(79,57,37,.08);
+      transition: transform .28s ease, box-shadow .28s ease;
     }
+    .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 24px 58px rgba(79,57,37,.13); }
     .gallery-item:nth-child(4n+1) { grid-column: span 7; }
     .gallery-item:nth-child(4n+2) { grid-column: span 5; }
     .gallery-item:nth-child(4n+3) { grid-column: span 5; }
@@ -98,6 +107,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item,
       .gallery-item:nth-child(n) { grid-column: auto; min-height: 16rem; }
+      .filter-btn { flex: 1 1 calc(50% - .65rem); }
     }
   `],
 })

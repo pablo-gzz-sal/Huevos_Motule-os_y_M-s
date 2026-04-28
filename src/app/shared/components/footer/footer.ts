@@ -2,74 +2,58 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BusinessConfigService } from '../../../core/services/business-config.service';
 import { ReservationService } from '../../../core/services/reservation.service';
+import { BusinessHoursComponent } from '../business-hours/business-hours';
+import { SocialLinksComponent } from '../social-links/social-links';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, BusinessHoursComponent, SocialLinksComponent],
   template: `
     <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
-          <!-- Brand -->
           <div class="footer-brand">
-            <p class="footer-logo">{{cfg.config().name}}</p>
-            <p class="footer-tagline">{{cfg.config().tagline}}</p>
-            <p class="footer-concept">{{cfg.config().concept}}</p>
+            <p class="footer-logo">{{ cfg.config().name }}</p>
+            <p class="footer-tagline">{{ cfg.config().tagline }}</p>
+            <p class="footer-concept">{{ cfg.config().concept }}</p>
+            <app-social-links [links]="cfg.social()" />
           </div>
-          <!-- Nav -->
+
           <div class="footer-col">
-            <p class="footer-heading">{{cfg.config().footer.navigationHeading}}</p>
+            <p class="footer-heading">{{ cfg.config().footer.navigationHeading }}</p>
             <nav class="footer-nav">
-              <a routerLink="/">{{cfg.navigation().homeLabel}}</a>
-              <a routerLink="/menu">{{cfg.navigation().menuLabel}}</a>
-              <a routerLink="/nosotros">{{cfg.navigation().aboutLabel}}</a>
-              <a routerLink="/contacto">{{cfg.config().footer.contactHeading}}</a>
+              <a routerLink="/">{{ cfg.navigation().homeLabel }}</a>
+              <a routerLink="/menu">{{ cfg.navigation().menuLabel }}</a>
+              <a routerLink="/nosotros">{{ cfg.navigation().aboutLabel }}</a>
+              <a routerLink="/contacto">{{ cfg.navigation().contactLabel }}</a>
             </nav>
           </div>
-          <!-- Hours -->
+
           <div class="footer-col">
-            <p class="footer-heading">{{cfg.config().footer.hoursHeading}}</p>
-            <ul class="hours-list" role="list">
-              @for (h of cfg.location().hours; track h.day) {
-                <li [class.closed]="h.closed">
-                  <span>{{h.day}}</span>
-                  <span>{{h.hours}}</span>
-                </li>
-              }
-            </ul>
+            <p class="footer-heading">{{ cfg.config().footer.hoursHeading }}</p>
+            <app-business-hours [hours]="cfg.location().hours" />
           </div>
-          <!-- Contact -->
+
           <div class="footer-col">
-            <p class="footer-heading">{{cfg.config().footer.contactHeading}}</p>
+            <p class="footer-heading">{{ cfg.config().footer.contactHeading }}</p>
             <address class="footer-address">
-              <p>{{cfg.location().address}}</p>
-              <p>{{cfg.location().city}}, {{cfg.location().state}}</p>
+              <p>{{ cfg.location().address }}</p>
+              <p>{{ cfg.location().city }}, {{ cfg.location().state }}</p>
               @if (cfg.location().phone) {
-                <a [href]="'tel:' + cfg.location().phone">{{cfg.location().phone}}</a>
+                <a [href]="'tel:' + cfg.location().phone">{{ cfg.location().phone }}</a>
               }
               @if (cfg.location().email) {
-                <a [href]="'mailto:' + cfg.location().email">{{cfg.location().email}}</a>
+                <a [href]="'mailto:' + cfg.location().email">{{ cfg.location().email }}</a>
               }
             </address>
-            <div class="footer-socials">
-              @if (cfg.social().instagram) {
-                <a [href]="cfg.social().instagram" target="_blank" rel="noopener" aria-label="Instagram">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-              }
-              @if (cfg.social().facebook) {
-                <a [href]="cfg.social().facebook" target="_blank" rel="noopener" aria-label="Facebook">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-              }
-            </div>
           </div>
         </div>
+
         <div class="footer-bottom divider">
-          <p>© {{year}} {{cfg.config().footer.copyrightLabel}}</p>
+          <p>(c) {{ year }} {{ cfg.config().footer.copyrightLabel }}</p>
           <button class="btn btn-outline-brand footer-reserve" (click)="reservationSvc.open()">
-            {{cfg.cta().reservationLabel}}
+            {{ cfg.cta().reservationLabel }}
           </button>
         </div>
       </div>
@@ -77,64 +61,93 @@ import { ReservationService } from '../../../core/services/reservation.service';
   `,
   styles: [`
     .site-footer {
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-divider);
-      padding-block: var(--space-16) var(--space-8);
+      width: min(calc(100% - clamp(1rem, 5vw, 4rem)), var(--page-rail));
+      margin: clamp(1rem, 2.5vw, 2rem) auto clamp(.75rem, 2vw, 1.25rem);
+      background: linear-gradient(150deg, rgba(255,255,255,.9), rgba(255,250,244,.72));
+      border: 1px solid var(--color-divider);
+      border-radius: clamp(1.25rem, 2.2vw, 2rem);
+      box-shadow: 0 18px 60px rgba(79,57,37,.08);
+      padding-block: clamp(var(--space-16), 7vw, var(--space-24)) clamp(var(--space-10), 4vw, var(--space-16));
+      padding-inline: clamp(.25rem, 1.5vw, 1rem);
     }
     .footer-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-10);
+      gap: clamp(var(--space-10), 5vw, var(--space-20));
+      align-items: start;
     }
     @media (min-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1.2fr 1fr; } }
     .footer-logo {
-      font-family: var(--font-display); font-size: var(--text-2xl);
-      font-weight: 700; color: var(--color-primary);
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-primary);
       margin-bottom: var(--space-2);
     }
+    .footer-brand,
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
     .footer-tagline {
-      font-size: var(--text-sm); letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--color-text-muted);
-      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
     }
     .footer-concept {
-      font-size: var(--text-sm); color: var(--color-text-muted);
-      line-height: 1.7; max-width: 36ch;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      max-width: 38ch;
+      margin-bottom: var(--space-2);
     }
     .footer-heading {
-      font-size: var(--text-xs); font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--color-primary); margin-bottom: var(--space-4);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-1);
     }
     .footer-nav, .footer-address {
-      display: flex; flex-direction: column; gap: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
     }
     .footer-nav a, .footer-address a {
-      font-size: var(--text-sm); color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
       text-decoration: none;
       transition: color var(--transition-ui);
     }
     .footer-nav a:hover, .footer-address a:hover { color: var(--color-primary); }
-    .footer-address { font-style: normal; gap: var(--space-2); }
+    .footer-address { font-style: normal; gap: var(--space-3); }
     .footer-address p { font-size: var(--text-sm); color: var(--color-text-muted); }
-    .hours-list { display: flex; flex-direction: column; gap: var(--space-2); }
-    .hours-list li {
-      display: flex; justify-content: space-between;
-      font-size: var(--text-sm); color: var(--color-text-muted);
-    }
-    .hours-list li.closed { color: var(--color-text-faint); text-decoration: line-through; }
-    .footer-socials { display: flex; gap: var(--space-4); margin-top: var(--space-4); }
-    .footer-socials a {
-      color: var(--color-text-muted); transition: color var(--transition-ui);
-    }
-    .footer-socials a:hover { color: var(--color-primary); }
+    app-business-hours { display:block; }
     .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: var(--space-4);
-      margin-top: var(--space-12); padding-top: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      margin-top: clamp(var(--space-12), 6vw, var(--space-20));
+      padding-top: var(--space-8);
     }
     .footer-bottom p { font-size: var(--text-sm); color: var(--color-text-faint); }
+    @media (max-width: 640px) {
+      .site-footer { width: min(calc(100% - 1rem), var(--page-rail)); }
+      .footer-grid,
+      .footer-bottom { text-align:center; justify-items:center; justify-content:center; }
+      .footer-brand,
+      .footer-col,
+      .footer-nav,
+      .footer-address { align-items:center; }
+      .footer-bottom { flex-direction: column; }
+      .footer-reserve { width: 100%; max-width: 18rem; }
+    }
   `],
 })
 export class FooterComponent {

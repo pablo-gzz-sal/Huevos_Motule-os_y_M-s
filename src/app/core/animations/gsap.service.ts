@@ -9,8 +9,15 @@ export class GsapService {
   private ScrollTrigger: any;
   private loaded = false;
 
+  private get prefersReducedMotion(): boolean {
+    return isPlatformBrowser(this.platformId)
+      && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  }
+
   async load(): Promise<{ gsap: any; ScrollTrigger: any }> {
-    if (!isPlatformBrowser(this.platformId)) return { gsap: null, ScrollTrigger: null };
+    if (!isPlatformBrowser(this.platformId) || this.prefersReducedMotion) {
+      return { gsap: null, ScrollTrigger: null };
+    }
     if (this.loaded) return { gsap: this.gsap, ScrollTrigger: this.ScrollTrigger };
 
     const gsapModule = await import('gsap');
@@ -36,6 +43,10 @@ export class GsapService {
         toggleActions: 'play none none none',
       },
     });
+  }
+
+  async staggerGroup(targets: string | Element | Element[], stagger = 0.06): Promise<void> {
+    await this.revealOnScroll(targets, stagger);
   }
 
   /** Clip-path image reveal (no layout shift) */
@@ -90,6 +101,22 @@ export class GsapService {
         start: 'top top',
         end: 'bottom top',
         scrub: true,
+      },
+    });
+  }
+
+  async ctaEntrance(target: string | Element): Promise<void> {
+    const { gsap, ScrollTrigger } = await this.load();
+    if (!gsap) return;
+    gsap.from(target, {
+      opacity: 0,
+      y: 18,
+      duration: 0.55,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: target,
+        start: 'top 92%',
+        toggleActions: 'play none none none',
       },
     });
   }

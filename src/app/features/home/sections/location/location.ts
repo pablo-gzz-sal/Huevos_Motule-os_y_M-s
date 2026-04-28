@@ -2,75 +2,71 @@ import { Component, inject, OnInit, ElementRef, viewChild } from '@angular/core'
 import { BusinessConfigService } from '../../../../core/services/business-config.service';
 import { ReservationService } from '../../../../core/services/reservation.service';
 import { GsapService } from '../../../../core/animations/gsap.service';
+import { BusinessHoursComponent } from '../../../../shared/components/business-hours/business-hours';
+import { MapCardComponent } from '../../../../shared/components/map-card/map-card';
+import { SectionHeaderComponent } from '../../../../shared/components/section-header/section-header';
 
 @Component({
   selector: 'app-location',
   standalone: true,
+  imports: [BusinessHoursComponent, MapCardComponent, SectionHeaderComponent],
   template: `
     <section class="section-pad location-section" id="ubicacion" aria-labelledby="location-heading">
       <div class="container location-shell">
         <div class="location-copy" #copy>
-          <span class="eyebrow">{{ cfg.config().sectionCopy.location.eyebrow }}</span>
-          <h2 class="text-h2" id="location-heading">{{ cfg.config().sectionCopy.location.heading }}</h2>
-          <p class="location-lead">{{ cfg.config().location.address }}, {{ cfg.config().location.city }}, {{ cfg.config().location.state }}</p>
+          <app-section-header
+            [eyebrow]="cfg.config().sectionCopy.location.eyebrow"
+            [heading]="cfg.config().sectionCopy.location.heading"
+            headingId="location-heading"
+          />
+          <p class="location-lead">
+            {{ cfg.config().location.address }}, {{ cfg.config().location.city }}, {{ cfg.config().location.state }}
+          </p>
 
-          <div class="location-card hours-card">
-            <p class="card-kicker">{{ cfg.config().location.hoursTitle }}</p>
-            <div class="hours-list">
-              @for (row of cfg.config().location.hours; track row.day) {
-                <div class="hours-row">
-                  <span>{{ row.day }}</span>
-                  <strong>{{ row.hours }}</strong>
-                </div>
-              }
-            </div>
-          </div>
+          <app-business-hours [title]="cfg.config().location.hoursTitle" [hours]="cfg.config().location.hours" />
 
           <div class="location-actions">
-            <a class="btn btn-primary" [href]="cfg.config().location.googleMapsUrl" target="_blank" rel="noopener noreferrer">{{ cfg.config().location.openMapsLabel }}</a>
+            <a class="btn btn-primary" [href]="cfg.config().location.googleMapsUrl" target="_blank" rel="noopener noreferrer">
+              {{ cfg.config().location.openMapsLabel }}
+            </a>
             <button class="btn btn-ghost" (click)="reservationSvc.open()">{{ cfg.cta().reservationLabel }}</button>
           </div>
         </div>
 
         <div class="location-visual" #visual>
-          <div class="location-map-card">
-            <img [src]="cfg.config().sectionCopy.images.locationMapImage" [alt]="cfg.config().location.mapImageAlt" width="800" height="600" loading="lazy" />
-            <div class="location-badge">
-              <span>📍</span>
-              <div>
-                <strong>{{ cfg.config().name }}</strong>
-                <p>{{ cfg.config().location.city }}</p>
-              </div>
-            </div>
-          </div>
+          <app-map-card
+            [imageSrc]="cfg.config().sectionCopy.images.locationMapImage"
+            [imageAlt]="cfg.config().location.mapImageAlt ?? cfg.config().name"
+            [mapsUrl]="cfg.config().location.googleMapsUrl"
+            [businessName]="cfg.config().name"
+            [city]="cfg.config().location.city"
+            [ariaLabel]="cfg.config().location.mapAriaLabel"
+          />
         </div>
       </div>
     </section>
   `,
   styles: [`
-    .location-section { background: linear-gradient(180deg, rgba(255,252,248,.96), rgba(250,247,241,.92)); }
-    .location-shell { display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items:center; }
-    .location-lead { margin-top:.8rem; color: var(--color-ink-700); max-width: 42rem; }
-    .location-card {
-      margin-top:1.25rem; padding:1.2rem; border-radius:1.35rem;
-      background: rgba(255,255,255,.8); border:1px solid rgba(92,64,51,.08);
-      box-shadow: 0 18px 40px rgba(79,57,37,.08);
+    .location-section {
+      background:
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 4%), var(--color-bg)),
+        radial-gradient(circle at 78% 18%, rgba(176,128,78,.13), transparent 24rem);
+      box-shadow: 0 18px 60px rgba(79,57,37,.06);
     }
-    .card-kicker { color: var(--color-ink-500); font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; margin-bottom:.8rem; }
-    .hours-list { display:grid; gap:.6rem; }
-    .hours-row { display:flex; justify-content:space-between; gap:1rem; color: var(--color-ink-700); }
-    .hours-row strong { color: var(--color-ink-900); }
-    .location-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.25rem; }
-    .location-map-card { position:relative; overflow:hidden; border-radius:1.8rem; box-shadow: 0 22px 54px rgba(79,57,37,.12); }
-    .location-map-card img { width:100%; height:100%; min-height:24rem; object-fit:cover; display:block; }
-    .location-badge {
-      position:absolute; left:1rem; right:1rem; bottom:1rem;
-      display:flex; align-items:center; gap:.8rem; padding:.9rem 1rem;
-      border-radius:1rem; background: rgba(255,255,255,.78); backdrop-filter: blur(8px);
+    .location-shell {
+      display:grid;
+      grid-template-columns: minmax(0, .86fr) minmax(280px, 1fr);
+      gap: clamp(2rem, 4.5vw, 4rem);
+      align-items:center;
+      max-width: 1040px;
     }
-    .location-badge p { margin:0; color: var(--color-ink-700); }
+    .location-lead { margin-top:-.75rem; color: var(--color-text-muted); max-width: 42rem; }
+    app-business-hours { display:block; margin-top:clamp(1.5rem, 3vw, 2.25rem); }
+    .location-actions { display:flex; flex-wrap:wrap; gap:1rem; margin-top:clamp(1.5rem, 3vw, 2.25rem); }
     @media (max-width: 900px) {
-      .location-shell { grid-template-columns: 1fr; }
+      .location-shell { grid-template-columns: 1fr; max-width: 40rem; }
+      .location-copy { text-align: center; }
+      .location-actions { justify-content: center; }
     }
   `],
 })

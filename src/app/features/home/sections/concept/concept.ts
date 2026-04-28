@@ -17,7 +17,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
               class="concept-image"
             />
             <div class="concept-badge">
-              <span class="concept-badge-number">2018</span>
+              <span class="concept-badge-number">{{ cfg.config().category }}</span>
               <span class="concept-badge-label">{{cfg.config().sectionCopy.concept.foundedLabel}}</span>
             </div>
           </div>
@@ -32,18 +32,12 @@ import { BusinessConfigService } from '../../../../core/services/business-config
               {{cfg.config().sectionCopy.concept.body}}
             </p>
             <div class="concept-stats">
-              <div class="stat">
-                <span class="stat-num">40+</span>
-                <span class="stat-label">Productores locales</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">8</span>
-                <span class="stat-label">Años de experiencia</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">100%</span>
-                <span class="stat-label">Ingredientes Yucatán</span>
-              </div>
+              @for (item of cfg.config().sectionCopy.testimonials.proofItems; track item.label) {
+                <div class="stat">
+                  <span class="stat-num">{{ item.value }}</span>
+                  <span class="stat-label">{{ item.label }}</span>
+                </div>
+              }
             </div>
           </div>
         </div>
@@ -53,19 +47,23 @@ import { BusinessConfigService } from '../../../../core/services/business-config
   styles: [`
     .concept-grid {
       display: grid; grid-template-columns: 1fr;
-      gap: var(--space-12); align-items: center;
+      gap: clamp(var(--space-8), 5vw, var(--space-16));
+      align-items: center;
+      max-width: 1040px;
+      margin-inline: auto;
     }
     @media (min-width: 768px) { .concept-grid { grid-template-columns: 1fr 1fr; } }
-    .concept-image-wrap { position: relative; }
+    .concept-image-wrap { position: relative; max-width: 34rem; margin-inline: auto; }
     .concept-image {
       width: 100%; border-radius: var(--radius-xl);
       object-fit: cover; aspect-ratio: 4/5;
+      box-shadow: 0 22px 64px rgba(79,57,37,.12);
     }
     .concept-badge {
       position: absolute; bottom: var(--space-6); left: calc(-1 * var(--space-6));
       background: var(--color-surface);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       padding: var(--space-4) var(--space-6);
       display: flex; flex-direction: column;
       box-shadow: var(--shadow-lg);
@@ -80,12 +78,18 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       text-transform: uppercase; color: var(--color-text-muted);
       margin-top: var(--space-1);
     }
-    .concept-text { display: flex; flex-direction: column; gap: var(--space-4); }
+    .concept-text { display: flex; flex-direction: column; gap: var(--space-4); max-width: 35rem; }
     .concept-stats {
       display: flex; gap: var(--space-8);
       padding-top: var(--space-6);
       border-top: 1px solid var(--color-divider);
       margin-top: var(--space-4);
+    }
+    @media (max-width: 767px) {
+      .concept-text { text-align: center; margin-inline: auto; }
+      .rule-brand { margin-inline: auto; }
+      .concept-stats { justify-content: center; flex-wrap: wrap; gap: var(--space-5); }
+      .stat { align-items: center; }
     }
     .stat { display: flex; flex-direction: column; gap: var(--space-1); }
     .stat-num {

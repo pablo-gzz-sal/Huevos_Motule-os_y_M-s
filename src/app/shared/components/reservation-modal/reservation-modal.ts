@@ -19,7 +19,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
                 <h2 class="text-h3">{{ cfg.config().reservation.modalTitle }}</h2>
                 <p class="modal-copy">{{ cfg.config().reservation.modalDescription }}</p>
               </div>
-              <button class="modal-close" type="button" (click)="svc.close()" [attr.aria-label]="cfg.config().uiCopy.reservationUi.closeAriaLabel">×</button>
+              <button class="modal-close" type="button" (click)="svc.close()" [attr.aria-label]="cfg.config().uiCopy.reservationUi.closeAriaLabel">x</button>
             </div>
 
             <form class="reservation-form" (ngSubmit)="submit()" #f="ngForm">
@@ -68,7 +68,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
 
           @if (svc.state() === 'success') {
             <div class="success-state">
-              <div class="success-orb" aria-hidden="true">✓</div>
+              <div class="success-orb" aria-hidden="true">OK</div>
               <span class="eyebrow">{{ cfg.config().uiCopy.reservationUi.successEyebrow }}</span>
               <h2 class="text-h3">{{ cfg.config().reservation.successTitle }}</h2>
               <p>{{ cfg.config().reservation.successDescription }}</p>
@@ -100,13 +100,13 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       pointer-events: none;
     }
     .modal {
-      width: min(100%, 760px);
+      width: min(100%, 720px);
       max-height: min(88vh, 920px);
       overflow: auto;
       pointer-events: auto;
       padding: 1.35rem;
-      border-radius: 1.75rem;
-      background: rgba(255, 252, 248, 0.96);
+      border-radius: 1.35rem;
+      background: linear-gradient(150deg, rgba(255,252,248,.97), rgba(255,255,255,.92));
       border: 1px solid rgba(92,64,51,.08);
       box-shadow: 0 30px 80px rgba(56, 38, 23, 0.18);
       animation: modalIn .34s cubic-bezier(0.16,1,0.3,1);
@@ -149,7 +149,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       transform: translateY(-1px);
     }
     textarea.input { resize: vertical; min-height: 6rem; }
-    .form-actions { display: flex; gap: .75rem; justify-content: flex-end; padding-top: .35rem; }
+    .form-actions { display: flex; gap: 1rem; justify-content: center; padding-top: .75rem; }
     .success-state {
       display: flex; flex-direction: column; align-items: center; text-align: center;
       gap: .9rem; padding: .5rem;
@@ -171,6 +171,15 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       color: var(--color-ink-700); margin-top: .45rem;
     }
     .success-actions { display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; }
+    @media (max-width: 520px) {
+      .modal-shell { padding: .5rem; align-items: end; }
+      .modal { border-radius: 1.1rem; padding: 1rem; max-height: 92vh; }
+      .modal-header { align-items:flex-start; }
+      .form-actions,
+      .success-actions { flex-direction: column-reverse; }
+      .form-actions .btn,
+      .success-actions .btn { width: 100%; }
+    }
     @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
     @keyframes riseIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -185,8 +194,12 @@ export class ReservationModalComponent {
   form: ReservationForm = { name: '', phone: '', date: '', time: '13:00', guests: 2, notes: '' };
 
   readonly minDate = new Date().toISOString().split('T')[0];
-  readonly timeSlots = ['13:00','14:00','15:00','19:00','20:00','20:30','21:00','21:30','22:00'];
-  readonly guestOptions = [1,2,3,4,5,6,7,8,10,12];
+  get timeSlots() {
+    return this.cfg.reservation().timeSlots ?? ['13:00', '14:00', '15:00', '19:00', '20:00', '20:30', '21:00'];
+  }
+  get guestOptions() {
+    return this.cfg.reservation().guestOptions ?? Array.from({ length: this.cfg.reservation().maxGuests }, (_, index) => index + 1);
+  }
 
   submit(): void {
     this.svc.submit(this.form, this.configSvc.reservation());
@@ -194,7 +207,6 @@ export class ReservationModalComponent {
 
   openWhatsapp(): void {
     const cfg = this.configSvc.reservation();
-    const msg = encodeURIComponent(this.svc.preview());
-    window.open(`https://wa.me/${cfg.whatsappNumber}?text=${msg}`, '_blank');
+    window.open(this.configSvc.whatsappUrl(this.svc.preview(), cfg.whatsappNumber), '_blank');
   }
 }

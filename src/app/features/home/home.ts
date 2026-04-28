@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { BusinessConfigService } from '../../core/services/business-config.service';
 import { HeroComponent }          from './sections/hero/hero';
 import { ConceptComponent }       from './sections/concept/concept';
 import { MenuHighlightsComponent } from './sections/menu-highlights/menu-highlights';
@@ -23,15 +24,23 @@ import { LocationComponent }      from './sections/location/location';
   ],
   template: `
     <main id="main-content">
-      <app-hero />
-      <app-concept />
-      <app-menu-highlights />
-      <app-promotions />
-      <app-gallery />
-      <app-testimonials />
-    <app-branches />
-      <app-location />
+      @for (section of cfg.sections(); track section.id) {
+        @if (section.enabled) {
+          @switch (section.id) {
+            @case ('hero') { <app-hero /> }
+            @case ('concept') { <app-concept /> }
+            @case ('menu-highlights') { <app-menu-highlights /> }
+            @case ('promotions') { <app-promotions /> }
+            @case ('gallery') { <app-gallery /> }
+            @case ('testimonials') { <app-testimonials /> }
+            @case ('branches') { <app-branches /> }
+            @case ('location') { <app-location /> }
+          }
+        }
+      }
     </main>
   `,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  readonly cfg = inject(BusinessConfigService);
+}
