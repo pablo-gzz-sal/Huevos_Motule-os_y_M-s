@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { SUSHI_ROLLER_CONFIG } from '../app/core/config/clients/sushi-roller.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: SUSHI_ROLLER_CONFIG,
 };
