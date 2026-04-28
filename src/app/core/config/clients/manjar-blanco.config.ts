@@ -171,7 +171,6 @@ export const MANJAR_BLANCO_CONFIG: BusinessConfig = {
       { day: 'Domingo', hours: '8:00 am - 6:00 pm' },
     ],
     phone: '+52 999 547 6237',
-    email: 'contacto@manjarblanco.shop',
   },
   social: {
     facebook: 'https://www.facebook.com/elmanjarblanco/',
