@@ -171,7 +171,6 @@ export const RAMIRO_COCINA_CONFIG: BusinessConfig = {
       { day: 'Domingo', hours: '11:00 am - 3:30 pm' },
     ],
     phone: '+52 999 232 0608',
-    email: 'contacto@ramirococina.mx',
   },
   social: {
     instagram: 'https://www.instagram.com/ramirococina_/',
