@@ -28,7 +28,10 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
           @for (cat of cfg.categories(); track cat.id) {
             <button class="cat-anchor" [class.active]="activeSection() === cat.id"
               (click)="scrollTo(cat.id)">
-              {{cat.emoji}} {{cat.name}}
+              @if (cat.emoji) {
+                <span aria-hidden="true">{{cat.emoji}}</span>
+              }
+              {{cat.name}}
             </button>
           }
         </nav>
@@ -79,7 +82,9 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
     }
     .menu-hero-overlay {
       position: absolute; inset: 0;
-      background: oklch(0.10 0.01 60 / 0.65);
+      background:
+        linear-gradient(180deg, rgba(42, 20, 8, .56), rgba(255, 248, 229, .24)),
+        linear-gradient(90deg, color-mix(in oklch, var(--color-primary), black 28%) 0%, transparent 70%);
     }
     .menu-hero-content {
       position: relative; z-index: 2;
@@ -90,7 +95,7 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
       display: flex; flex-wrap: wrap; justify-content:center; gap: var(--space-2);
       margin-bottom: clamp(var(--space-12), 7vw, var(--space-20));
       position: sticky; top: 4.5rem; z-index: 10;
-      background: rgba(255,251,247,.82);
+      background: color-mix(in oklch, var(--color-surface), transparent 14%);
       backdrop-filter: blur(14px);
       padding: var(--space-3) var(--space-4);
       border: 1px solid var(--color-divider);
@@ -112,7 +117,7 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
       max-width: 820px;
       padding: clamp(1.35rem, 3vw, 2rem);
       border-radius: var(--radius-lg);
-      background: linear-gradient(150deg, rgba(255,255,255,.86), rgba(255,250,244,.68));
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 8%), color-mix(in oklch, var(--color-surface-2), transparent 20%));
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 20%);
       box-shadow: 0 18px 48px rgba(79,57,37,.07);
     }
@@ -126,7 +131,7 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
       flex-direction: column;
       gap: var(--space-5);
       border-radius: var(--radius-xl);
-      background: linear-gradient(150deg, rgba(255,255,255,.78), rgba(255,250,244,.62));
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 10%), color-mix(in oklch, var(--color-accent), transparent 84%));
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 22%);
     }
     @media (max-width: 640px) {

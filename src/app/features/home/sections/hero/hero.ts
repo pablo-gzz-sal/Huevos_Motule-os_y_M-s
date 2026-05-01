@@ -15,7 +15,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
 
       <div class="container hero-shell">
         <div class="hero-copy" #el>
-          <span class="eyebrow">{{ cfg.hero().locationLabel }}</span>
+          <span class="hero-kicker">{{ cfg.hero().locationLabel }}</span>
           <h1 class="hero-title">
             {{ headlineLine1 }}<br />
             <em>{{ headlineLine2 }}</em>
@@ -43,6 +43,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
             <p class="spotlight-text">
               {{ cfg.config().sectionCopy.menuHighlights.subheading }}
             </p>
+            <div class="spotlight-line" aria-hidden="true"></div>
           </div>
         </div>
       </div>
@@ -66,8 +67,10 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       align-items: end;
       overflow: clip;
       border-radius: clamp(1.5rem, 2.8vw, 2.4rem);
-      background: linear-gradient(180deg, color-mix(in oklch, var(--color-bg), transparent 68%), var(--color-bg));
-      box-shadow: 0 30px 80px rgba(79,57,37,.13);
+      background:
+        linear-gradient(180deg, color-mix(in oklch, var(--color-accent), transparent 74%), var(--color-bg)),
+        var(--color-bg);
+      box-shadow: 0 30px 90px rgba(96, 54, 22, .16);
     }
     .hero-media {
       position: absolute;
@@ -80,8 +83,18 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-bg), transparent 88%) 0%, color-mix(in oklch, var(--color-bg), transparent 54%) 48%, color-mix(in oklch, var(--color-bg), transparent 10%) 100%),
-        linear-gradient(90deg, color-mix(in oklch, var(--color-bg), transparent 18%) 0%, color-mix(in oklch, var(--color-bg), transparent 76%) 58%, color-mix(in oklch, var(--color-bg), transparent 48%) 100%);
+        linear-gradient(180deg, rgba(42, 20, 8, .16) 0%, rgba(255, 249, 235, .18) 42%, color-mix(in oklch, var(--color-bg), transparent 4%) 100%),
+        linear-gradient(90deg, color-mix(in oklch, var(--color-bg), transparent 2%) 0%, color-mix(in oklch, var(--color-bg), transparent 60%) 52%, rgba(85, 36, 18, .2) 100%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 38%;
+      background:
+        repeating-linear-gradient(90deg, rgba(103, 54, 20, .09) 0 1px, transparent 1px 26px),
+        linear-gradient(180deg, transparent, rgba(255, 250, 240, .72));
+      pointer-events: none;
     }
     .hero-shell {
       position: relative;
@@ -95,19 +108,26 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     }
     .hero-copy {
       max-width: 43rem;
-      padding: clamp(1.35rem, 3vw, 2.5rem);
-      border-radius: clamp(1.25rem, 2vw, 1.8rem);
-      backdrop-filter: blur(16px) saturate(1.08);
-      background:
-        linear-gradient(135deg, color-mix(in oklch, var(--color-surface), transparent 16%), color-mix(in oklch, var(--color-surface-2), transparent 30%)),
-        color-mix(in oklch, var(--color-surface), transparent 20%);
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
-      box-shadow: 0 22px 70px rgba(79,57,37,.14);
+      padding-block: clamp(1rem, 2vw, 1.8rem);
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: var(--text-sm);
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+    .hero-kicker::before {
+      content: '';
+      width: 2.7rem;
+      height: 2px;
+      background: var(--color-primary);
     }
     .hero-title {
       font-size: clamp(3rem, 7vw, 6rem);
       line-height: .95;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
       color: var(--color-text);
       margin-top: .5rem;
     }
@@ -135,13 +155,14 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       margin-top: 1.25rem;
     }
     .hero-pill {
-      padding: .62rem .9rem;
+      padding: .62rem .95rem;
       border-radius: 999px;
-      background: color-mix(in oklch, var(--color-surface), transparent 10%);
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
-      color: var(--color-text-muted);
+      background: color-mix(in oklch, var(--color-surface), transparent 12%);
+      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 74%);
+      color: var(--color-text);
       font-size: .88rem;
-      font-weight: 600;
+      font-weight: 800;
+      box-shadow: 0 12px 26px rgba(96, 54, 22, .08);
     }
     .hero-spotlight {
       display:flex;
@@ -149,11 +170,13 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     }
     .spotlight-card {
       max-width: 22rem;
-      padding: 1.35rem;
-      border-radius: 1.35rem;
-      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
-      box-shadow: 0 20px 54px rgba(79,57,37,.14);
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
+      padding: 1.45rem;
+      border-radius: 1.15rem;
+      background:
+        linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-surface-2), transparent 16%));
+      box-shadow: 0 24px 62px rgba(96, 54, 22, .17);
+      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 72%);
+      backdrop-filter: blur(14px) saturate(1.08);
     }
     .spotlight-kicker {
       font-size:.78rem;
@@ -171,6 +194,12 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       margin-top:.75rem;
       color: var(--color-text-muted);
       font-size:.95rem;
+    }
+    .spotlight-line {
+      margin-top: 1rem;
+      height: .45rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), color-mix(in oklch, var(--color-cta), white 10%));
     }
     .hero-scroll-cue {
       position:absolute;
@@ -191,10 +220,11 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     @media (max-width: 900px) {
       .hero-shell {
         grid-template-columns: 1fr;
-        padding-top: 7rem;
+        padding-top: 4.8rem;
+        padding-bottom: 1.8rem;
       }
       .hero {
-        min-height: calc(100svh - 1.2rem);
+        min-height: calc(92svh - 1.2rem);
         width: min(calc(100% - 1rem), var(--page-rail));
         margin-top: .6rem;
       }
@@ -203,13 +233,14 @@ import { GsapService } from '../../../../core/animations/gsap.service';
         border-radius: 1.5rem;
       }
       .hero-title {
-        font-size: clamp(2.7rem, 12vw, 4.4rem);
+        font-size: clamp(2.55rem, 11vw, 3.65rem);
       }
       .hero-spotlight {
-        justify-content: stretch;
+        display: none;
       }
-      .spotlight-card {
-        max-width: none;
+      .hero-meta,
+      .hero-scroll-cue {
+        display: none;
       }
     }
   `]

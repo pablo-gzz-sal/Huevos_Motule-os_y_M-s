@@ -30,9 +30,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   styles: [`
     .testimonials-section {
       background:
-        linear-gradient(180deg, rgba(250,247,241,.72), rgba(255,252,248,.96)),
-        radial-gradient(circle at 20% 0%, rgba(176,128,78,.12), transparent 24rem);
-      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 6%), color-mix(in oklch, var(--color-bg), transparent 4%)),
+        radial-gradient(circle at 20% 0%, color-mix(in oklch, var(--color-accent), transparent 80%), transparent 24rem);
+      box-shadow: 0 18px 60px rgba(96, 54, 22, .07);
     }
     .testimonials-header { text-align:center; margin: 0 auto clamp(1.75rem, 3.5vw, 2.75rem); max-width: 46rem; }
     .testimonials-grid {
@@ -43,17 +43,17 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       margin-inline: auto;
     }
     .testimonial-card {
-      padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: 1.1rem;
-      background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(255,248,240,.72));
-      border:1px solid rgba(92,64,51,.08);
-      box-shadow: 0 16px 40px rgba(79,57,37,.07);
+      padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: .95rem;
+      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
+      border:1px solid color-mix(in oklch, var(--color-primary), transparent 80%);
+      box-shadow: 0 16px 40px rgba(96, 54, 22, .08);
       transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
     }
     .testimonial-card:hover,
-    .testimonial-card:focus-visible { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(79,57,37,.12); border-color: rgba(176,128,78,.22); }
-    .testimonial-quote { color: var(--color-ink-900); font-size: 1.02rem; line-height:1.75; }
-    .testimonial-meta { margin-top: 1rem; display:grid; gap:.2rem; color: var(--color-ink-700); }
-    .testimonial-meta span { color: var(--color-ink-500); font-size:.88rem; }
+    .testimonial-card:focus-visible { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(96, 54, 22, .13); border-color: color-mix(in oklch, var(--color-primary), transparent 64%); }
+    .testimonial-quote { color: var(--color-text); font-size: 1.02rem; line-height:1.75; }
+    .testimonial-meta { margin-top: 1rem; display:grid; gap:.2rem; color: var(--color-text-muted); }
+    .testimonial-meta span { color: var(--color-text-faint); font-size:.88rem; }
     @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; max-width: 36rem; } .testimonials-header { text-align:center; } }
   `],
 })

@@ -49,15 +49,15 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
   styles: [`
     .gallery-section {
       background:
-        linear-gradient(180deg, rgba(250,247,241,.72), rgba(255,252,248,.96)),
-        radial-gradient(circle at 80% 20%, rgba(176,128,78,.13), transparent 26rem);
-      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface-2), transparent 24%), color-mix(in oklch, var(--color-surface), transparent 4%)),
+        radial-gradient(circle at 80% 20%, color-mix(in oklch, var(--color-primary), transparent 86%), transparent 26rem);
+      box-shadow: 0 18px 60px rgba(96, 54, 22, .07);
     }
     .gallery-header { text-align:center; margin: 0 auto clamp(1.5rem, 3vw, 2.25rem); max-width: 46rem; }
     .gallery-filters { display:flex; flex-wrap:wrap; justify-content:center; gap:.75rem; margin: 0 auto clamp(1.75rem, 3vw, 2.5rem); }
     .filter-btn {
       padding:.75rem 1.25rem; border-radius:999px; background: rgba(255,255,255,.78);
-      border:1px solid rgba(92,64,51,.08); color: var(--color-ink-700); font-weight:600;
+      border:1px solid color-mix(in oklch, var(--color-border), transparent 20%); color: var(--color-text-muted); font-weight:700;
     }
     .filter-btn.active { background: var(--color-primary); color:white; border-color: var(--color-primary); }
     .gallery-grid {
@@ -71,13 +71,13 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
       grid-column: span 4;
       position:relative;
       overflow:hidden;
-      border-radius: 1.1rem;
+      border-radius: .95rem;
       cursor:pointer;
       min-height: 18rem;
-      box-shadow: 0 18px 44px rgba(79,57,37,.08);
+      box-shadow: 0 18px 44px rgba(96, 54, 22, .09);
       transition: transform .28s ease, box-shadow .28s ease;
     }
-    .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 24px 58px rgba(79,57,37,.13); }
+    .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 24px 58px rgba(96, 54, 22, .15); }
     .gallery-item:nth-child(4n+1) { grid-column: span 7; }
     .gallery-item:nth-child(4n+2) { grid-column: span 5; }
     .gallery-item:nth-child(4n+3) { grid-column: span 5; }
@@ -88,7 +88,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
       position:absolute; left:1rem; right:1rem; bottom:1rem;
       padding:.8rem 1rem; border-radius: 1rem;
       background: rgba(255,255,255,.72); backdrop-filter: blur(8px);
-      color: var(--color-ink-900); font-weight:600;
+      color: var(--color-text); font-weight:700;
     }
     .gallery-lightbox {
       position:fixed; inset:0; z-index:120;

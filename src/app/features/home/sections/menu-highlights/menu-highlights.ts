@@ -62,8 +62,8 @@ import { RouterLink } from '@angular/router';
     .menu-section {
       background:
         linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-bg), transparent 6%)),
-        radial-gradient(circle at 85% 10%, color-mix(in oklch, var(--color-primary), transparent 84%), transparent 28rem);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 18px 60px rgba(79,57,37,.06);
+        radial-gradient(circle at 85% 10%, color-mix(in oklch, var(--color-accent), transparent 74%), transparent 28rem);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 18px 60px rgba(96, 54, 22, .07);
     }
     .menu-shell { max-width: 1060px; }
     .menu-header { text-align: center; margin: 0 auto clamp(2rem, 4vw, 3rem); max-width: 48rem; }
@@ -77,17 +77,17 @@ import { RouterLink } from '@angular/router';
     .cat-tab {
       text-align: center;
       padding: 1.1rem 1.15rem 1.05rem;
-      border-radius: 1rem;
+      border-radius: .85rem;
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
       background: color-mix(in oklch, var(--color-surface), transparent 16%);
-      box-shadow: 0 10px 24px rgba(79,57,37,.05);
+      box-shadow: 0 10px 24px rgba(96, 54, 22, .06);
       transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
     }
     .cat-tab:hover { transform: translateY(-2px); }
     .cat-tab.active {
       background: color-mix(in oklch, var(--color-surface-2), transparent 8%);
       border-color: color-mix(in oklch, var(--color-primary), transparent 58%);
-      box-shadow: 0 14px 32px rgba(79,57,37,.08);
+      box-shadow: 0 14px 32px rgba(96, 54, 22, .09);
     }
     .cat-label { display:block; font-weight:700; color: var(--color-text); }
     .cat-tab small { display:block; margin-top:.3rem; color: var(--color-text-muted); font-size:.8rem; }
@@ -100,13 +100,13 @@ import { RouterLink } from '@angular/router';
     }
     .menu-card {
       overflow: hidden;
-      border-radius: 1.15rem;
+      border-radius: .95rem;
       background: color-mix(in oklch, var(--color-surface), transparent 4%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
-      box-shadow: 0 18px 44px rgba(79,57,37,.08);
+      box-shadow: 0 18px 44px rgba(96, 54, 22, .09);
       transition: transform .28s ease, box-shadow .28s ease;
     }
-    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(79,57,37,.12); }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(96, 54, 22, .14); }
     .menu-card-img { position:relative; overflow:hidden; }
     .menu-card-img img { width:100%; height:100%; object-fit:cover; transition: transform .55s ease; }
     .menu-card:hover .menu-card-img img { transform: scale(1.06); }

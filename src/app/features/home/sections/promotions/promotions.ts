@@ -12,7 +12,6 @@ import { GsapService } from '../../../../core/animations/gsap.service';
         <div class="section-header promotions-header" #hdr>
           <span class="eyebrow">{{ cfg.config().sectionCopy.promotions.eyebrow }}</span>
           <h2 class="text-h2" id="promotions-heading">{{ cfg.config().sectionCopy.promotions.heading }}</h2>
-          <p class="text-lead section-subtitle">{{ cfg.config().sectionCopy.promotions.eyebrow }}</p>
         </div>
 
         <div class="promotions-grid" #grid>
@@ -31,9 +30,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   styles: [`
     .promotions-section {
       background:
-        linear-gradient(180deg, rgba(255,252,248,.95), rgba(250,247,241,.9)),
-        radial-gradient(circle at 15% 15%, rgba(114,74,42,.12), transparent 24rem);
-      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 10%)),
+        radial-gradient(circle at 15% 15%, color-mix(in oklch, var(--color-primary), transparent 86%), transparent 24rem);
+      box-shadow: 0 18px 60px rgba(96, 54, 22, .07);
     }
     .promotions-header { text-align:center; max-width: 46rem; margin: 0 auto clamp(2rem, 4vw, 3rem); }
     .section-subtitle { margin-top:.7rem; color: var(--color-ink-700); }
@@ -46,17 +45,17 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     }
     .promo-card {
       padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: 1.1rem;
-      background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(255,248,240,.76));
-      border:1px solid rgba(92,64,51,.08);
-      box-shadow: 0 16px 40px rgba(79,57,37,.07);
+      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-accent), transparent 88%));
+      border:1px solid color-mix(in oklch, var(--color-primary), transparent 78%);
+      box-shadow: 0 16px 40px rgba(96, 54, 22, .08);
       transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
     }
     .promo-card:hover,
     .promo-card:focus-visible { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(79,57,37,.12); border-color: rgba(176,128,78,.24); }
-    .promo-kicker { font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color: var(--color-ink-500); }
-    .promo-title { margin-top:.55rem; font-family: var(--font-display); font-size: 1.55rem; line-height:1.04; color: var(--color-ink-900); }
-    .promo-desc { margin-top:.7rem; color: var(--color-ink-700); line-height:1.65; }
-    .promo-link { margin-top:1rem; color: var(--color-brand-700); font-weight:700; }
+    .promo-kicker { font-size:.76rem; letter-spacing:0; text-transform:uppercase; color: var(--color-text-muted); font-weight: 800; }
+    .promo-title { margin-top:.55rem; font-family: var(--font-display); font-size: 1.55rem; line-height:1.04; color: var(--color-text); }
+    .promo-desc { margin-top:.7rem; color: var(--color-text-muted); line-height:1.65; }
+    .promo-link { margin-top:1rem; color: var(--color-primary); font-weight:800; }
     @media (max-width: 900px) { .promotions-grid { grid-template-columns: 1fr; max-width: 36rem; } .promotions-header { text-align:center; } }
   `],
 })

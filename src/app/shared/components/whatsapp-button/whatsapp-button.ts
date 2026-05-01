@@ -30,7 +30,8 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     @media (max-width: 520px) {
       .wa-fab {
         bottom: calc(var(--space-4) + 4.4rem);
-        left: var(--space-4);
+        left: auto;
+        right: var(--space-4);
       }
     }
   `],

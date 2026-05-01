@@ -17,7 +17,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
               class="concept-image"
             />
             <div class="concept-badge">
-              <span class="concept-badge-number">{{ cfg.config().category }}</span>
+              <span class="concept-badge-number">{{ cfg.config().sectionCopy.testimonials.proofItems[0].value }}</span>
               <span class="concept-badge-label">{{cfg.config().sectionCopy.concept.foundedLabel}}</span>
             </div>
           </div>
@@ -55,9 +55,9 @@ import { BusinessConfigService } from '../../../../core/services/business-config
     @media (min-width: 768px) { .concept-grid { grid-template-columns: 1fr 1fr; } }
     .concept-image-wrap { position: relative; max-width: 34rem; margin-inline: auto; }
     .concept-image {
-      width: 100%; border-radius: var(--radius-xl);
+      width: 100%; border-radius: var(--radius-lg);
       object-fit: cover; aspect-ratio: 4/5;
-      box-shadow: 0 22px 64px rgba(79,57,37,.12);
+      box-shadow: 0 22px 64px rgba(96, 54, 22, .14);
     }
     .concept-badge {
       position: absolute; bottom: var(--space-6); left: calc(-1 * var(--space-6));
@@ -67,6 +67,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       padding: var(--space-4) var(--space-6);
       display: flex; flex-direction: column;
       box-shadow: var(--shadow-lg);
+      max-width: 15rem;
     }
     @media (max-width: 768px) { .concept-badge { left: var(--space-4); } }
     .concept-badge-number {
