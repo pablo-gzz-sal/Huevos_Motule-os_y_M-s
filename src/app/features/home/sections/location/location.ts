@@ -49,9 +49,8 @@ import { SectionHeaderComponent } from '../../../../shared/components/section-he
   styles: [`
     .location-section {
       background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 4%), var(--color-bg)),
-        radial-gradient(circle at 78% 18%, rgba(176,128,78,.13), transparent 24rem);
-      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 0%), var(--color-bg));
+      box-shadow: 0 18px 60px rgba(31,24,16,.07);
     }
     .location-shell {
       display:grid;
