@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { EL_MESON_MERIDA_CONFIG } from '../app/core/config/clients/el-meson-merida.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: EL_MESON_MERIDA_CONFIG,
 };
+
