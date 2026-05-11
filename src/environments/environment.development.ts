@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { CALABAZO_RESTAURANTE_CONFIG } from '../app/core/config/clients/calabazo-restaurante.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: CALABAZO_RESTAURANTE_CONFIG,
 };
+
