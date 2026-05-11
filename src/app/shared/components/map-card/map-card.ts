@@ -41,10 +41,11 @@ import { Component, input } from '@angular/core';
       gap:.8rem;
       padding:.9rem 1rem;
       border-radius:var(--radius-md);
-      background: color-mix(in oklch, var(--color-surface), transparent 18%);
-      border: 1px solid var(--color-border);
+      background: color-mix(in oklch, var(--color-surface), transparent 2%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       backdrop-filter: blur(8px);
     }
+    .location-badge strong { color: var(--color-text); }
     .location-badge p { margin:0; color: var(--color-text-muted); }
     @media (max-width: 520px) {
       .map-card img { min-height: 18rem; }

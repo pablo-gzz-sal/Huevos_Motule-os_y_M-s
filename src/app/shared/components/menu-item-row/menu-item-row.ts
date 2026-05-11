@@ -28,10 +28,11 @@ import { MenuItem } from '../../../core/config/business.config';
       gap: var(--space-6);
       padding: var(--space-5) var(--space-4);
       border-radius: var(--radius-md);
-      border-bottom: 1px solid color-mix(in oklch, var(--color-divider), transparent 50%);
+      border: 1px solid transparent;
+      border-bottom-color: color-mix(in oklch, var(--color-divider), transparent 36%);
       transition: background var(--transition-ui), transform var(--transition-ui);
     }
-    .menu-list-item:hover { background: color-mix(in oklch, var(--color-primary), transparent 96%); transform: translateY(-1px); }
+    .menu-list-item:hover { background: color-mix(in oklch, var(--color-primary), transparent 92%); border-color: color-mix(in oklch, var(--color-primary), transparent 72%); transform: translateY(-1px); }
     .mli-info { flex: 1; }
     .mli-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2); flex-wrap: wrap; }
     .mli-name { font-family: var(--font-display); font-size: var(--text-lg); }
@@ -46,7 +47,7 @@ import { MenuItem } from '../../../core/config/business.config';
       flex-shrink: 0;
     }
     [data-tag="signature"] { background: var(--color-primary); color: var(--color-text-inverse); }
-    [data-tag="popular"] { background: var(--color-cta); color: var(--color-text-inverse); }
+    [data-tag="popular"] { background: var(--color-cta); color: color-mix(in oklch, var(--color-text), black 18%); }
     [data-tag="new"], [data-tag="vegan"] { background: var(--color-accent); color: var(--color-text-inverse); }
     @media (max-width: 520px) {
       .menu-list-item { flex-direction: column; align-items:center; text-align:center; gap: var(--space-3); }
