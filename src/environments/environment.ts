@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { THE_KAI_COFFEE_CONFIG } from '../app/core/config/clients/the-kai-coffee.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: THE_KAI_COFFEE_CONFIG,
 };
+

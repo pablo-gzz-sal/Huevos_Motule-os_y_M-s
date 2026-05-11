@@ -1,0 +1,218 @@
+﻿import { BusinessConfig } from '../business.config';
+import { COFFEE_ST_FITZ_CONFIG } from './coffee-st-fitz.config';
+
+export const THE_KAI_COFFEE_CONFIG: BusinessConfig = {
+  ...COFFEE_ST_FITZ_CONFIG,
+  id: 'the-kai-coffee',
+  name: 'The Kai Coffee',
+  tagline: 'Cafe boutique y fusion asiatico yucateca',
+  category: 'cafe',
+  concept: 'Cafe de especialidad boutique con una mezcla poco comun de sabores yucatecos y cocina asiatica; hoy depende de Linktree.',
+  identity: {
+    id: 'the-kai-coffee',
+    name: 'The Kai Coffee',
+    tagline: 'Cafe boutique y fusion asiatico yucateca',
+    category: 'cafe',
+    concept: 'Cafe de especialidad boutique con una mezcla poco comun de sabores yucatecos y cocina asiatica; hoy depende de Linktree.',
+  },
+  brand: {
+    ...COFFEE_ST_FITZ_CONFIG.brand,
+    primaryColor: 'oklch(0.25 0.045 197)',
+    accentColor: 'oklch(0.58 0.1 162)',
+    bgBase: 'oklch(0.972 0.014 92)',
+    darkMode: false,
+  },
+  theme: {
+    ...COFFEE_ST_FITZ_CONFIG.theme!,
+    mode: 'light',
+    primary: 'oklch(0.25 0.045 197)',
+    primaryHover: 'oklch(0.25 0.045 197)',
+    accent: 'oklch(0.58 0.1 162)',
+    cta: 'oklch(0.74 0.11 80)',
+    background: 'oklch(0.972 0.014 92)',
+    surface: 'oklch(0.995 0.005 92)',
+    surfaceAlt: 'oklch(0.94 0.026 84)',
+    border: 'oklch(0.82 0.035 82)',
+    text: 'oklch(0.16 0.035 205)',
+    textMuted: 'oklch(0.43 0.03 75)',
+    radius: 'soft',
+    motionIntensity: 'standard',
+  },
+  seo: {
+    title: 'The Kai Coffee - Cafe boutique y fusion asiatico yucateca',
+    description: 'The Kai Coffee: Cafe de especialidad boutique con una mezcla poco comun de sabores yucatecos y cocina asiatica; hoy depende de Linktree.',
+    keywords: ['The Kai Coffee', 'Cafe boutique y fusion asiatico yucateca', 'Centro, Merida', 'restaurante Merida', 'sitio web restaurante'],
+    ogImage: '/assets/og-image.jpg',
+    locale: 'es_MX',
+    schemaType: 'CafeOrCoffeeShop',
+  },
+  hero: {
+    ...COFFEE_ST_FITZ_CONFIG.hero,
+    headline: 'The Kai Coffee\nAsia y Yucatan en cafe',
+    subheadline: 'Una pagina boutique para darle casa propia al concepto: cafe, platillos fusion, mapa, horarios y contacto sin depender de Linktree.',
+    ctaLabel: 'Ver menu',
+    ctaSecondaryLabel: 'Como llegar',
+    locationLabel: 'Centro, Merida',
+    backgroundImage: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1800&auto=format&fit=crop&q=85',
+    overlayOpacity: 0.32,
+  },
+  cta: {
+    reservationLabel: 'Contactar',
+    whatsappLabel: 'WhatsApp',
+    stickyLabel: 'Ver menu',
+  },
+  footer: {
+    ...COFFEE_ST_FITZ_CONFIG.footer,
+    copyrightLabel: 'The Kai Coffee - Centro, Merida',
+  },
+  sectionCopy: {
+    ...COFFEE_ST_FITZ_CONFIG.sectionCopy,
+    images: {
+      ...COFFEE_ST_FITZ_CONFIG.sectionCopy.images,
+      heroBackground: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1800&auto=format&fit=crop&q=85',
+      conceptImage: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=1000&auto=format&fit=crop&q=85',
+      conceptImageAlt: 'The Kai Coffee ambiente y propuesta', 
+      locationMapImage: 'https://images.unsplash.com/photo-1577086664693-894d8405334a?w=1000&auto=format&fit=crop&q=85',
+      menuPageHeroImage: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600&auto=format&fit=crop&q=85',
+      menuItemFallbackImage: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&auto=format&fit=crop&q=80',
+      menuItemImages: {},
+    },
+    concept: {
+      eyebrow: 'El nucleo de la marca',
+      heading: 'Una pagina pensada para vender mejor The Kai Coffee',
+      lead: 'The Kai tiene una idea rara y vendible: cafe de especialidad con cruces asiaticos y yucatecos en el Centro.',
+      body: 'La web debe explicar esa rareza con claridad, hacerla antojable y convertir la etapa temprana en una identidad mas creible para crecer.',
+      foundedLabel: 'Centro, Merida',
+    },
+    menuHighlights: {
+      eyebrow: 'Favoritos para descubrir',
+      heading: 'Cafe boutique y fusion asiatico yucateca',
+      subheading: 'Una seleccion breve que convierte el antojo en decision: que pedir, donde esta y como contactar.',
+      fullMenuLabel: 'Explorar menu',
+    },
+    promotions: {
+      eyebrow: 'Motivos para ir',
+      heading: 'Ganchos comerciales claros para redes, mapa y WhatsApp',
+      validUntilPrefix: 'Disponible',
+    },
+    gallery: {
+      eyebrow: 'Primera impresion',
+      heading: 'Visuales que explican ambiente, comida y ocasion',
+      filters: [
+        { id: 'all', label: 'Todo' },
+        { id: 'food', label: 'Comida' },
+        { id: 'drinks', label: 'Bebidas' },
+        { id: 'interior', label: 'Lugar' },
+        { id: 'events', label: 'Momentos' },
+      ],
+    },
+    testimonials: {
+      eyebrow: 'Prueba social',
+      heading: 'Senales que ya existen y el sitio debe ordenar',
+      subheading: 'El objetivo es volver accesible lo que hoy vive disperso entre Instagram, mapas, Linktree o sitios de terceros.',
+      proofItems: [
+        { value: '2k', label: 'Base temprana' },
+        { value: 'Centro', label: 'Descubrimiento' },
+        { value: 'Fusion', label: 'Nicho unico' }
+      ],
+    },
+    location: {
+      eyebrow: 'Ubicacion',
+      heading: 'Encuentra The Kai Coffee en Centro, Merida',
+    },
+    menuPage: {
+      eyebrow: 'Menu pensado para movil',
+      heading: 'Menu The Kai Coffee',
+      lead: 'Categorias claras, platos representativos y llamadas a contacto sin depender de capturas o historias destacadas.',
+      finalHeading: 'Listo para visitar The Kai Coffee?',
+      finalDescription: 'Menu, mapa, horario y WhatsApp quedan a un toque.',
+    },
+    contactPage: {
+      eyebrow: 'Contacto rapido',
+      heading: 'Contacto, ubicacion y reservas',
+      whatsappTitle: 'WhatsApp',
+      reservationTitle: 'Consulta o reserva',
+      reservationDescription: 'Genera un mensaje listo para continuar la conversacion por WhatsApp.',
+      emailTitle: 'Contacto',
+    },
+  },
+  menuCategories: [
+    { id: 'cafe', name: 'Cafe', description: 'Seleccion pensada para decidir rapido desde movil' },
+    { id: 'fusion', name: 'Fusion', description: 'Seleccion pensada para decidir rapido desde movil' },
+    { id: 'brunch', name: 'Brunch', description: 'Seleccion pensada para decidir rapido desde movil' },
+    { id: 'dulce', name: 'Dulce', description: 'Seleccion pensada para decidir rapido desde movil' },
+    { id: 'bebidas', name: 'Bebidas', description: 'Seleccion pensada para decidir rapido desde movil' }
+  ],
+  menuItems: [
+    { id: 'm1', categoryId: 'cafe', name: 'Latte de casa', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145', tag: 'signature', featured: true },
+    { id: 'm2', categoryId: 'fusion', name: 'Cold brew Kai', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145', featured: true },
+    { id: 'm3', categoryId: 'brunch', name: 'Bao de cochinita', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145', featured: true },
+    { id: 'm4', categoryId: 'dulce', name: 'Toast asiatico yucateco', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145', featured: true },
+    { id: 'm5', categoryId: 'bebidas', name: 'Bowl de arroz', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145' },
+    { id: 'm6', categoryId: 'cafe', name: 'Sandwich katsu', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145' },
+    { id: 'm7', categoryId: 'fusion', name: 'Matcha tropical', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145' },
+    { id: 'm8', categoryId: 'brunch', name: 'Postre de temporada', description: 'Una opcion representativa para comunicar la propuesta sin depender solo de redes.', price: '$145' }
+  ],
+  promotions: [
+    { id: 'p1', title: 'Del Linktree a una casa propia', description: 'Una razon clara para visitar, reservar o pedir informacion sin buscar en publicaciones.', badge: 'Favorito', ctaLabel: 'Ver menu', ctaAction: 'link', ctaValue: '/menu' },
+    { id: 'p2', title: 'Fusion boutique', description: 'Mensaje listo para WhatsApp con horario, personas y dudas principales.', badge: 'Contacto rapido', ctaLabel: 'Escribir', ctaAction: 'whatsapp' }
+  ],
+  gallery: [
+    { id: 'g1', src: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1800&auto=format&fit=crop&q=85', alt: 'The Kai Coffee preview image 1', caption: 'The Kai Coffee', category: 'food' },
+    { id: 'g2', src: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=1000&auto=format&fit=crop&q=85', alt: 'The Kai Coffee preview image 2', caption: 'The Kai Coffee', category: 'interior' },
+    { id: 'g3', src: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600&auto=format&fit=crop&q=85', alt: 'The Kai Coffee preview image 3', caption: 'The Kai Coffee', category: 'food' },
+    { id: 'g4', src: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&auto=format&fit=crop&q=80', alt: 'The Kai Coffee preview image 4', caption: 'The Kai Coffee', category: 'drinks' },
+    { id: 'g5', src: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1800&auto=format&fit=crop&q=85', alt: 'The Kai Coffee preview image 5', caption: 'The Kai Coffee', category: 'events' },
+    { id: 'g6', src: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=1000&auto=format&fit=crop&q=85', alt: 'The Kai Coffee preview image 6', caption: 'The Kai Coffee', category: 'interior' }
+  ],
+  testimonials: [
+    { id: 't1', name: 'Audiencia publica', source: 'Instagram', rating: 5, text: 'La marca ya tiene una comunidad de 2.0k seguidores; el sitio convierte esa atencion en acciones.', date: '2026' },
+    { id: 't2', name: 'Cliente ideal', source: 'Direct', rating: 5, text: 'La propuesta se entiende rapido: especialidad, ubicacion, menu y contacto sin friccion.', date: '2026' },
+    { id: 't3', name: 'Oportunidad digital', source: 'Direct', rating: 5, text: 'Un sitio propio ayuda a depender menos de perfiles sociales y mas de una experiencia controlada.', date: '2026' },
+  ],
+  faqs: [
+    { question: 'Que hace diferente a The Kai Coffee?', answer: 'Cafe de especialidad boutique con una mezcla poco comun de sabores yucatecos y cocina asiatica; hoy depende de Linktree.' },
+    { question: 'Como contacto o reservo?', answer: 'El sitio prioriza WhatsApp con un mensaje listo para enviar, ademas de mapa y horarios visibles.' },
+  ],
+  reservation: {
+    ...COFFEE_ST_FITZ_CONFIG.reservation,
+    modalTitle: 'Contacto rapido The Kai Coffee',
+    modalDescription: 'Completa los datos y genera un mensaje listo para WhatsApp.',
+    messageTemplate: 'Hola The Kai Coffee. Quisiera informacion o reservar para {{guests}} personas el {{date}} a las {{time}}. Mi nombre es {{name}}. Notas: {{notes}}',
+    whatsappNumber: '529990000000',
+  },
+  whatsapp: {
+    number: '529990000000',
+    defaultMessage: 'Hola The Kai Coffee, quisiera informacion sobre menu, horario o ubicacion.',
+    floatingButton: true,
+    ariaLabel: 'Contactar a The Kai Coffee por WhatsApp',
+  },
+  location: {
+    address: 'Centro, Merida',
+    city: 'Centro',
+    state: 'Yucatan',
+    zip: '97000',
+    country: 'Mexico',
+    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=The%20Kai%20Coffee%20Centro%2C%20Merida',
+    mapAriaLabel: 'Mapa de ubicacion de The Kai Coffee',
+    mapImageAlt: 'Mapa referencial de The Kai Coffee',
+    openMapsLabel: 'Abrir ubicacion',
+    hoursTitle: 'Horario por confirmar',
+    hours: [
+      { day: 'Lunes', hours: 'Horario por confirmar' },
+      { day: 'Martes', hours: 'Horario por confirmar' },
+      { day: 'Miercoles', hours: 'Horario por confirmar' },
+      { day: 'Jueves', hours: 'Horario por confirmar' },
+      { day: 'Viernes', hours: 'Horario por confirmar' },
+      { day: 'Sabado', hours: 'Horario por confirmar' },
+      { day: 'Domingo', hours: 'Horario por confirmar' },
+    ],
+    phone: '+52 999 000 0000',
+    email: 'hello@thekaicoffee.mx',
+  },
+  social: {
+    instagram: 'https://www.instagram.com/thekaicoffee/',
+  },
+};
+
+
