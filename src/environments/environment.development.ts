@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { VIVA_LA_BRUNCH_CONFIG } from '../app/core/config/clients/viva-la-brunch.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: VIVA_LA_BRUNCH_CONFIG,
 };
+
