@@ -63,7 +63,7 @@ import { RouterLink } from '@angular/router';
   styles: [`
     .menu-section {
       background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 18%));
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 6%));
       border-block: 1px solid color-mix(in oklch, var(--color-border), transparent 18%);
     }
     .menu-shell { max-width: 1060px; }
@@ -79,7 +79,7 @@ import { RouterLink } from '@angular/router';
       padding: .3rem .65rem;
       border: 1px solid color-mix(in oklch, var(--color-primary), transparent 66%);
       border-radius: 999px;
-      background: color-mix(in oklch, var(--color-cta), transparent 86%);
+      background: color-mix(in oklch, var(--color-cta), transparent 78%);
     }
     .cat-tabs {
       display: grid;
@@ -87,8 +87,8 @@ import { RouterLink } from '@angular/router';
       gap: .65rem;
       padding: .5rem;
       border-radius: 1rem;
-      background: color-mix(in oklch, var(--color-surface-2), transparent 18%);
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 18%);
+      background: color-mix(in oklch, var(--color-surface-2), transparent 4%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 4%);
     }
     .cat-tab {
       text-align: left;
@@ -116,19 +116,19 @@ import { RouterLink } from '@angular/router';
     .menu-card {
       overflow: hidden;
       border-radius: .65rem;
-      background: color-mix(in oklch, var(--color-surface), transparent 4%);
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
-      box-shadow: 0 18px 44px rgba(96, 54, 22, .09);
+      background: color-mix(in oklch, var(--color-surface), transparent 0%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      box-shadow: 0 18px 44px rgba(31, 24, 16, .1);
       transition: transform .28s ease, box-shadow .28s ease;
     }
-    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(96, 54, 22, .14); }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(31, 24, 16, .16); }
     .menu-card-img { position:relative; overflow:hidden; }
     .menu-card-img img { width:100%; height:100%; object-fit:cover; transition: transform .55s ease; }
     .menu-card:hover .menu-card-img img { transform: scale(1.06); }
     .item-tag {
       position:absolute; top:1rem; left:1rem; padding:.4rem .7rem; border-radius:999px;
       font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-      background: color-mix(in oklch, var(--color-surface), transparent 8%); color: var(--color-text);
+      background: color-mix(in oklch, var(--color-surface), transparent 0%); color: var(--color-text);
     }
     .menu-card.featured { border-color: color-mix(in oklch, var(--color-primary), transparent 58%); }
     .menu-card-body { padding: 1rem 1rem 1.1rem; }

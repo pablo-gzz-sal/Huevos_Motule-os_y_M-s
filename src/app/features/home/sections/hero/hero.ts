@@ -9,7 +9,12 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   imports: [RouterLink],
   template: `
     <section class="hero" [attr.aria-label]="'Hero - ' + cfg.config().name">
-      <div class="hero-media" #bg [style.background-image]="'url(' + cfg.config().sectionCopy.images.heroBackground + ')'">
+      <div
+        class="hero-media"
+        #bg
+        [style.background-image]="'url(' + cfg.config().sectionCopy.images.heroBackground + ')'"
+        [style.--hero-overlay-opacity]="cfg.hero().overlayOpacity"
+      >
         <div class="hero-overlay"></div>
       </div>
 
@@ -57,15 +62,15 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   `,
   styles: [`
     :host{display:block}
-    .hero{position:relative;min-height:calc(100svh - 1rem);width:min(calc(100% - clamp(.8rem,3vw,2rem)),1360px);margin:clamp(.55rem,1vw,.9rem) auto clamp(1.2rem,2.5vw,2rem);display:grid;align-items:center;overflow:clip;border-radius:clamp(1rem,2vw,1.65rem);background:var(--color-primary);box-shadow:0 34px 100px rgba(57,34,15,.18)}
+    .hero{position:relative;min-height:calc(100svh - 1rem);width:min(calc(100% - clamp(.8rem,3vw,2rem)),1360px);margin:clamp(.55rem,1vw,.9rem) auto clamp(1.2rem,2.5vw,2rem);display:grid;align-items:center;overflow:clip;border-radius:clamp(1rem,2vw,1.65rem);background:var(--color-primary);box-shadow:0 34px 100px rgba(31,24,16,.22)}
     .hero-media {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
     }
-    .hero-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(20, 12, 6, .15), rgba(20, 12, 6, .72)), linear-gradient(90deg, rgba(28, 18, 11, .88), rgba(28, 18, 11, .15)); }
-    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 54px 54px; pointer-events: none; }
+    .hero-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(10, 8, 5, .26), rgba(10, 8, 5, .82)), linear-gradient(90deg, rgba(10, 8, 5, .92), rgba(10, 8, 5, .44) 46%, rgba(10, 8, 5, .18)); opacity: max(.88, var(--hero-overlay-opacity, .38)); }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 54px 54px; pointer-events: none; opacity:.55; }
     .hero-shell {
       position: relative;
       z-index: 1;
@@ -76,7 +81,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       padding-top: 6.5rem;
       padding-bottom: 6.8rem;
     }
-    .hero-copy { width: min(43rem, 100%); }
+    .hero-copy { width: min(43rem, 100%); text-shadow: 0 2px 22px rgba(0,0,0,.55); }
     .hero-kicker {
       display: inline-flex;
       align-items: center;
@@ -84,6 +89,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       font-size: var(--text-sm);
       font-weight: 800;
       color: color-mix(in oklch, var(--color-cta), white 10%);
+      text-shadow: 0 1px 18px rgba(0,0,0,.62);
     }
     .hero-kicker::before {
       content: '';
@@ -97,8 +103,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       letter-spacing: 0;
       color: var(--color-text-inverse);
       margin-top: .5rem;
-      max-width: 12ch;
+      max-width: 13ch;
       overflow-wrap: anywhere;
+      text-shadow: 0 4px 32px rgba(0,0,0,.62);
     }
     .hero-title em {
       display: block;
@@ -111,12 +118,13 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       font-weight: 700;
     }
     .hero-subtitle {
-      max-width: 40rem;
+      max-width: 42rem;
       width: 100%;
       margin-top: 1rem;
       font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: color-mix(in oklch, var(--color-text-inverse), transparent 16%);
+      color: color-mix(in oklch, var(--color-text-inverse), transparent 6%);
       font-weight: 500;
+      text-shadow: 0 2px 20px rgba(0,0,0,.62);
     }
     .hero-actions {
       display:flex;
@@ -133,9 +141,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       padding: 1.35rem;
       border-radius: .95rem;
       background:
-        linear-gradient(160deg, rgba(255,255,255,.96), rgba(255,246,224,.88));
+        linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 1%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
       box-shadow: 0 24px 62px rgba(0, 0, 0, .2);
-      border: 1px solid rgba(255,255,255,.42);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       backdrop-filter: blur(14px) saturate(1.08);
     }
     .spotlight-kicker {
@@ -161,7 +169,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       font-size: .86rem;
       font-weight: 800;
     }
-    .hero-service-strip { position: absolute; left: clamp(1rem, 3vw, 2.25rem); right: clamp(1rem, 3vw, 2.25rem); bottom: 1.15rem; z-index: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: .95rem; overflow: hidden; background: rgba(255, 250, 238, .9); border: 1px solid rgba(255,255,255,.45); box-shadow: 0 20px 54px rgba(0,0,0,.18); backdrop-filter: blur(14px); }
+    .hero-service-strip { position: absolute; left: clamp(1rem, 3vw, 2.25rem); right: clamp(1rem, 3vw, 2.25rem); bottom: 1.15rem; z-index: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: .95rem; overflow: hidden; background: color-mix(in oklch, var(--color-surface), transparent 4%); border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%); box-shadow: 0 20px 54px rgba(0,0,0,.22); backdrop-filter: blur(14px); }
     .service-item {
       padding: .95rem 1rem;
       display: grid;
