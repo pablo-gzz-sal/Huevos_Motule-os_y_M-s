@@ -83,19 +83,23 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
     .menu-hero-overlay {
       position: absolute; inset: 0;
       background:
-        linear-gradient(180deg, rgba(42, 20, 8, .56), rgba(255, 248, 229, .24)),
-        linear-gradient(90deg, color-mix(in oklch, var(--color-primary), black 28%) 0%, transparent 70%);
+        linear-gradient(180deg, rgba(10, 8, 5, .22), rgba(10, 8, 5, .78)),
+        linear-gradient(90deg, rgba(10, 8, 5, .8), rgba(10, 8, 5, .18) 72%);
     }
     .menu-hero-content {
       position: relative; z-index: 2;
       padding-top: 6rem; display: flex; flex-direction: column; align-items:center; text-align:center; gap: var(--space-4);
+      color: var(--color-text-inverse);
+      text-shadow: 0 3px 24px rgba(0,0,0,.62);
     }
+    .menu-hero-content .eyebrow { color: color-mix(in oklch, var(--color-cta), white 12%); }
+    .menu-hero-content .text-lead { color: color-mix(in oklch, var(--color-text-inverse), transparent 6%) !important; }
     .menu-body { max-width: 980px; }
     .menu-cat-nav {
       display: flex; flex-wrap: wrap; justify-content:center; gap: var(--space-2);
       margin-bottom: clamp(var(--space-12), 7vw, var(--space-20));
       position: sticky; top: 4.5rem; z-index: 10;
-      background: color-mix(in oklch, var(--color-surface), transparent 14%);
+      background: color-mix(in oklch, var(--color-surface), transparent 4%);
       backdrop-filter: blur(14px);
       padding: var(--space-3) var(--space-4);
       border: 1px solid var(--color-divider);
@@ -117,9 +121,9 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
       max-width: 820px;
       padding: clamp(1.35rem, 3vw, 2rem);
       border-radius: var(--radius-lg);
-      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 8%), color-mix(in oklch, var(--color-surface-2), transparent 20%));
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 20%);
-      box-shadow: 0 18px 48px rgba(79,57,37,.07);
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      box-shadow: 0 18px 48px rgba(31,24,16,.09);
     }
     .menu-section-header { text-align:center; margin-bottom: var(--space-6); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-divider); }
     .menu-items-list { display: flex; flex-direction: column; }
@@ -131,8 +135,8 @@ import { MenuItemRowComponent } from '../../shared/components/menu-item-row/menu
       flex-direction: column;
       gap: var(--space-5);
       border-radius: var(--radius-xl);
-      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 10%), color-mix(in oklch, var(--color-accent), transparent 84%));
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 22%);
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-accent), transparent 80%));
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
     }
     @media (max-width: 640px) {
       .menu-hero { width: min(calc(100% - 1rem), var(--page-rail)); }

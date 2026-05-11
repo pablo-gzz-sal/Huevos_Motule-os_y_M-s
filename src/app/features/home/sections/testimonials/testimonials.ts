@@ -30,9 +30,8 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   styles: [`
     .testimonials-section {
       background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 6%), color-mix(in oklch, var(--color-bg), transparent 4%)),
-        radial-gradient(circle at 20% 0%, color-mix(in oklch, var(--color-accent), transparent 80%), transparent 24rem);
-      box-shadow: 0 18px 60px rgba(96, 54, 22, .07);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-bg), transparent 4%));
+      box-shadow: 0 18px 60px rgba(31, 24, 16, .07);
     }
     .testimonials-header { text-align:center; margin: 0 auto clamp(1.75rem, 3.5vw, 2.75rem); max-width: 46rem; }
     .testimonials-grid {
@@ -44,9 +43,9 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     }
     .testimonial-card {
       padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: .95rem;
-      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
-      border:1px solid color-mix(in oklch, var(--color-primary), transparent 80%);
-      box-shadow: 0 16px 40px rgba(96, 54, 22, .08);
+      background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
+      border:1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      box-shadow: 0 16px 40px rgba(31, 24, 16, .1);
       transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
     }
     .testimonial-card:hover,
