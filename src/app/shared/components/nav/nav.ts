@@ -57,9 +57,9 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       margin: 0 auto;
       border-radius: var(--radius-full);
       backdrop-filter: blur(18px) saturate(1.08);
-      background: color-mix(in oklch, var(--color-surface), transparent 16%);
-      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 78%);
-      box-shadow: 0 18px 48px rgba(96, 54, 22, .12);
+      background: color-mix(in oklch, var(--color-surface), transparent 4%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      box-shadow: 0 18px 48px rgba(31, 24, 16, .14);
     }
     .nav-shell { display:flex; align-items:center; justify-content:space-between; min-height: 4.4rem; gap: 1rem; padding-inline: clamp(.85rem, 2vw, 1.4rem); }
     .brand-logo { display:flex; align-items:center; gap:.75rem; color: var(--color-text); text-decoration:none; }
@@ -72,7 +72,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     }
     .brand-name { font-family: var(--font-display); font-size: 1.5rem; }
     .nav-desktop { display:flex; align-items:center; gap:1.2rem; }
-    .nav-link { color: var(--color-text-muted); text-decoration:none; font-weight:700; }
+    .nav-link { color: var(--color-text-muted); text-decoration:none; font-weight:800; }
     .nav-link.active { color: var(--color-text); }
     .nav-actions { display:flex; align-items:center; gap:.75rem; }
     .nav-toggle {
@@ -98,17 +98,17 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       margin-inline:auto;
       display:grid; gap:.7rem; padding:1rem; border-radius:1.4rem;
       background: color-mix(in oklch, var(--color-surface), transparent 2%);
-      border:1px solid color-mix(in oklch, var(--color-primary), transparent 78%);
-      box-shadow: 0 22px 54px rgba(79,57,37,.14);
+      border:1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      box-shadow: 0 22px 54px rgba(31,24,16,.16);
     }
     .mobile-sheet-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:.25rem; }
-    .mobile-close { width:2.3rem; height:2.3rem; border-radius:999px; background: rgba(255,255,255,.7); color: var(--color-text); font-size:1.4rem; }
+    .mobile-close { width:2.3rem; height:2.3rem; border-radius:999px; background: var(--color-surface-2); color: var(--color-text); font-size:1.4rem; }
     .mobile-link {
       padding: 1rem 1rem; border-radius: 1rem; text-decoration:none;
-      color: var(--color-text); background: rgba(255,255,255,.78); font-weight:700;
+      color: var(--color-text); background: color-mix(in oklch, var(--color-surface-2), transparent 6%); font-weight:800;
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
     }
-    .mobile-link:hover { transform: translateX(4px); background: rgba(255,255,255,.95); box-shadow: 0 12px 24px rgba(79,57,37,.08); }
+    .mobile-link:hover { transform: translateX(4px); background: var(--color-surface); box-shadow: 0 12px 24px rgba(31,24,16,.1); }
     @keyframes sheetIn { from { opacity:0; transform: translateY(-14px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     @media (max-width: 900px) {

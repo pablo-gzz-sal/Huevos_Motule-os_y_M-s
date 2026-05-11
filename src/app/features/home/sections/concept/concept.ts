@@ -59,8 +59,8 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       margin-inline: auto;
       padding: clamp(.65rem, 1.5vw, 1rem);
       border: 1px solid color-mix(in oklch, var(--color-primary), transparent 76%);
-      background: linear-gradient(145deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
-      box-shadow: 0 20px 60px rgba(57, 34, 15, .09);
+      background: linear-gradient(145deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
+      box-shadow: 0 20px 60px rgba(31, 24, 16, .11);
     }
     .concept-image-wrap::before {
       content: '';
@@ -119,7 +119,9 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       gap: var(--space-1);
       padding: .95rem;
       border-top: 2px solid color-mix(in oklch, var(--color-primary), transparent 50%);
-      background: color-mix(in oklch, var(--color-surface), transparent 16%);
+      background: color-mix(in oklch, var(--color-surface), transparent 0%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      border-radius: .8rem;
     }
     .stat-num {
       font-family: var(--font-display); font-size: var(--text-xl);
