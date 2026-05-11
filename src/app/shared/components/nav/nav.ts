@@ -112,10 +112,17 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     @keyframes sheetIn { from { opacity:0; transform: translateY(-14px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     @media (max-width: 900px) {
-      .site-header { width: min(calc(100% - 1rem), var(--page-rail)); }
+      .site-header { width: calc(100vw - 1rem); }
       .nav-desktop, .desktop-cta { display:none; }
       .nav-toggle { display:flex; }
       .brand-name { font-size: 1.35rem; }
+    }
+    @media (max-width: 520px) {
+      .nav-shell { min-height: 4rem; padding-inline: .75rem; }
+      .brand-logo { gap: .55rem; min-width: 0; }
+      .brand-name { font-size: 1.08rem; white-space: nowrap; }
+      .brand-mark { width: 2.15rem; height: 2.15rem; font-size: .9rem; }
+      .nav-toggle { position: absolute; right: .75rem; top: 50%; transform: translateY(-50%); width: 2.55rem; height: 2.55rem; flex: 0 0 auto; }
     }
   `],
 })

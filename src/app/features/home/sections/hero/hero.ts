@@ -28,12 +28,6 @@ import { GsapService } from '../../../../core/animations/gsap.service';
               {{ cfg.hero().ctaSecondaryLabel }}
             </a>
           </div>
-
-          <div class="hero-meta">
-            @for (cat of cfg.categories().slice(0, 3); track cat.id) {
-              <div class="hero-pill">{{ cat.name }}</div>
-            }
-          </div>
         </div>
 
         <div class="hero-spotlight" #el>
@@ -43,104 +37,86 @@ import { GsapService } from '../../../../core/animations/gsap.service';
             <p class="spotlight-text">
               {{ cfg.config().sectionCopy.menuHighlights.subheading }}
             </p>
-            <div class="spotlight-line" aria-hidden="true"></div>
+            <div class="spotlight-meta">
+              <span>{{ cfg.config().location.hours[0].hours }}</span>
+              <span>{{ cfg.config().location.phone }}</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <button class="hero-scroll-cue" (click)="scrollToConcept()" [attr.aria-label]="cfg.hero().scrollCueLabel">
-        <span>{{ cfg.hero().scrollCueLabel }}</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M12 5v14M19 12l-7 7-7-7"/>
-        </svg>
-      </button>
+      <div class="hero-service-strip" aria-label="Informacion rapida">
+        @for (item of quickSignals; track item.label) {
+          <div class="service-item">
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}</strong>
+          </div>
+        }
+      </div>
     </section>
   `,
   styles: [`
-    :host { display:block; }
-    .hero {
-      position: relative;
-      min-height: calc(100svh - 1.5rem);
-      width: min(calc(100% - clamp(1rem, 5vw, 4rem)), var(--page-rail));
-      margin: clamp(.8rem, 1.8vw, 1.25rem) auto clamp(1rem, 2.5vw, 2rem);
-      display: grid;
-      align-items: end;
-      overflow: clip;
-      border-radius: clamp(1.5rem, 2.8vw, 2.4rem);
-      background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-accent), transparent 74%), var(--color-bg)),
-        var(--color-bg);
-      box-shadow: 0 30px 90px rgba(96, 54, 22, .16);
-    }
+    :host{display:block}
+    .hero{position:relative;min-height:calc(100svh - 1rem);width:min(calc(100% - clamp(.8rem,3vw,2rem)),1360px);margin:clamp(.55rem,1vw,.9rem) auto clamp(1.2rem,2.5vw,2rem);display:grid;align-items:center;overflow:clip;border-radius:clamp(1rem,2vw,1.65rem);background:var(--color-primary);box-shadow:0 34px 100px rgba(57,34,15,.18)}
     .hero-media {
       position: absolute;
       inset: 0;
       background-size: cover;
       background-position: center;
-      transform: scale(1.02);
     }
-    .hero-overlay {
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(42, 20, 8, .16) 0%, rgba(255, 249, 235, .18) 42%, color-mix(in oklch, var(--color-bg), transparent 4%) 100%),
-        linear-gradient(90deg, color-mix(in oklch, var(--color-bg), transparent 2%) 0%, color-mix(in oklch, var(--color-bg), transparent 60%) 52%, rgba(85, 36, 18, .2) 100%);
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 38%;
-      background:
-        repeating-linear-gradient(90deg, rgba(103, 54, 20, .09) 0 1px, transparent 1px 26px),
-        linear-gradient(180deg, transparent, rgba(255, 250, 240, .72));
-      pointer-events: none;
-    }
+    .hero-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(20, 12, 6, .15), rgba(20, 12, 6, .72)), linear-gradient(90deg, rgba(28, 18, 11, .88), rgba(28, 18, 11, .15)); }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(0deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 54px 54px; pointer-events: none; }
     .hero-shell {
       position: relative;
       z-index: 1;
       display: grid;
       grid-template-columns: minmax(0, 1.12fr) minmax(280px, .74fr);
       gap: clamp(1.25rem, 3vw, 3rem);
-      align-items: end;
-      padding-top: 8rem;
-      padding-bottom: 5.5rem;
+      align-items: center;
+      padding-top: 6.5rem;
+      padding-bottom: 6.8rem;
     }
-    .hero-copy {
-      max-width: 43rem;
-      padding-block: clamp(1rem, 2vw, 1.8rem);
-    }
+    .hero-copy { width: min(43rem, 100%); }
     .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: .65rem;
       font-size: var(--text-sm);
       font-weight: 800;
-      color: var(--color-primary);
+      color: color-mix(in oklch, var(--color-cta), white 10%);
     }
     .hero-kicker::before {
       content: '';
       width: 2.7rem;
       height: 2px;
-      background: var(--color-primary);
+      background: currentColor;
     }
     .hero-title {
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: .95;
+      font-size: clamp(3rem, 6.8vw, 5.9rem);
+      line-height: .92;
       letter-spacing: 0;
-      color: var(--color-text);
+      color: var(--color-text-inverse);
       margin-top: .5rem;
+      max-width: 12ch;
+      overflow-wrap: anywhere;
     }
     .hero-title em {
-      font-style: italic;
-      color: var(--color-primary);
-      font-weight: 500;
+      display: block;
+      max-width: 12ch;
+      margin-top: .2rem;
+      font-size: .74em;
+      line-height: 1;
+      font-style: normal;
+      color: color-mix(in oklch, var(--color-cta), white 4%);
+      font-weight: 700;
     }
     .hero-subtitle {
       max-width: 40rem;
+      width: 100%;
       margin-top: 1rem;
       font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--color-text-muted);
+      color: color-mix(in oklch, var(--color-text-inverse), transparent 16%);
+      font-weight: 500;
     }
     .hero-actions {
       display:flex;
@@ -148,34 +124,18 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       gap:.75rem;
       margin-top: 1.5rem;
     }
-    .hero-meta {
-      display:flex;
-      flex-wrap:wrap;
-      gap:.6rem;
-      margin-top: 1.25rem;
-    }
-    .hero-pill {
-      padding: .62rem .95rem;
-      border-radius: 999px;
-      background: color-mix(in oklch, var(--color-surface), transparent 12%);
-      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 74%);
-      color: var(--color-text);
-      font-size: .88rem;
-      font-weight: 800;
-      box-shadow: 0 12px 26px rgba(96, 54, 22, .08);
-    }
     .hero-spotlight {
       display:flex;
       justify-content:flex-end;
     }
     .spotlight-card {
       max-width: 22rem;
-      padding: 1.45rem;
-      border-radius: 1.15rem;
+      padding: 1.35rem;
+      border-radius: .95rem;
       background:
-        linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-surface-2), transparent 16%));
-      box-shadow: 0 24px 62px rgba(96, 54, 22, .17);
-      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 72%);
+        linear-gradient(160deg, rgba(255,255,255,.96), rgba(255,246,224,.88));
+      box-shadow: 0 24px 62px rgba(0, 0, 0, .2);
+      border: 1px solid rgba(255,255,255,.42);
       backdrop-filter: blur(14px) saturate(1.08);
     }
     .spotlight-kicker {
@@ -190,56 +150,61 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       line-height:1.08;
       color: var(--color-text);
     }
-    .spotlight-text {
-      margin-top:.75rem;
-      color: var(--color-text-muted);
-      font-size:.95rem;
-    }
-    .spotlight-line {
+    .spotlight-text{margin-top:.75rem;color:var(--color-text-muted)}
+    .spotlight-meta {
       margin-top: 1rem;
-      height: .45rem;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), color-mix(in oklch, var(--color-cta), white 10%));
+      display: grid;
+      gap: .35rem;
+      padding-top: 1rem;
+      border-top: 1px solid color-mix(in oklch, var(--color-border), transparent 20%);
+      color: var(--color-primary);
+      font-size: .86rem;
+      font-weight: 800;
     }
-    .hero-scroll-cue {
-      position:absolute;
-      left:50%;
-      bottom:1.2rem;
-      transform:translateX(-50%);
-      z-index:2;
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-      padding:.65rem .9rem;
-      border-radius:999px;
-      background: color-mix(in oklch, var(--color-surface), transparent 18%);
-      border:1px solid color-mix(in oklch, var(--color-border), transparent 35%);
+    .hero-service-strip { position: absolute; left: clamp(1rem, 3vw, 2.25rem); right: clamp(1rem, 3vw, 2.25rem); bottom: 1.15rem; z-index: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: .95rem; overflow: hidden; background: rgba(255, 250, 238, .9); border: 1px solid rgba(255,255,255,.45); box-shadow: 0 20px 54px rgba(0,0,0,.18); backdrop-filter: blur(14px); }
+    .service-item {
+      padding: .95rem 1rem;
+      display: grid;
+      gap: .2rem;
+      border-right: 1px solid color-mix(in oklch, var(--color-border), transparent 12%);
+    }
+    .service-item:last-child { border-right: 0; }
+    .service-item span {
       color: var(--color-text-muted);
-      backdrop-filter: blur(8px);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .service-item strong {
+      color: var(--color-text);
+      font-size: .96rem;
+      line-height: 1.2;
     }
     @media (max-width: 900px) {
       .hero-shell {
         grid-template-columns: 1fr;
         padding-top: 4.8rem;
-        padding-bottom: 1.8rem;
+        padding-bottom: 6.5rem;
+        overflow: hidden;
       }
       .hero {
         min-height: calc(92svh - 1.2rem);
         width: min(calc(100% - 1rem), var(--page-rail));
         margin-top: .6rem;
       }
-      .hero-copy {
-        padding: 1.4rem;
-        border-radius: 1.5rem;
-      }
+      .hero-copy{max-width:21rem;padding:.6rem}
       .hero-title {
-        font-size: clamp(2.55rem, 11vw, 3.65rem);
+        font-size: clamp(2.1rem, 9vw, 3.05rem);
+        max-width: 11ch;
       }
+      .hero-title em { max-width: 11ch; }
+      .hero-subtitle{max-width:21rem}
+      .hero-actions{flex-direction:column;align-items:stretch;max-width:21rem}
+      .hero-actions .btn{width:100%;padding-inline:.9rem}
       .hero-spotlight {
         display: none;
       }
-      .hero-meta,
-      .hero-scroll-cue {
+      .hero-service-strip {
         display: none;
       }
     }
@@ -254,6 +219,13 @@ export class HeroComponent implements OnInit {
   get headlineLine1() { return this.cfg.hero().headline.split('\n')[0] ?? this.cfg.hero().headline; }
   get headlineLine2() { return this.cfg.hero().headline.split('\n')[1] ?? ''; }
   get featuredItemName() { return this.cfg.featuredItems()[0]?.name ?? this.cfg.config().tagline; }
+  get quickSignals() {
+    return [
+      { label: 'Horario', value: this.cfg.config().location.hours[0]?.hours ?? 'Horario publicado' },
+      { label: 'Especialidad', value: this.cfg.categories()[0]?.name ?? this.cfg.config().category },
+      { label: 'Accion', value: this.cfg.cta().whatsappLabel },
+    ];
+  }
 
   async ngOnInit(): Promise<void> {
     const items = this.els().map(ref => ref.nativeElement);

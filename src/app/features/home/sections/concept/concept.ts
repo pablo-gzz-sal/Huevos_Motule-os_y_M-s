@@ -49,21 +49,39 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       display: grid; grid-template-columns: 1fr;
       gap: clamp(var(--space-8), 5vw, var(--space-16));
       align-items: center;
-      max-width: 1040px;
+      max-width: 1080px;
       margin-inline: auto;
     }
     @media (min-width: 768px) { .concept-grid { grid-template-columns: 1fr 1fr; } }
-    .concept-image-wrap { position: relative; max-width: 34rem; margin-inline: auto; }
+    .concept-image-wrap {
+      position: relative;
+      max-width: 34rem;
+      margin-inline: auto;
+      padding: clamp(.65rem, 1.5vw, 1rem);
+      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 76%);
+      background: linear-gradient(145deg, color-mix(in oklch, var(--color-surface), transparent 4%), color-mix(in oklch, var(--color-surface-2), transparent 22%));
+      box-shadow: 0 20px 60px rgba(57, 34, 15, .09);
+    }
+    .concept-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: clamp(1.3rem, 3vw, 2rem) auto auto clamp(-.9rem, -1vw, -.5rem);
+      width: 34%;
+      height: 46%;
+      background: color-mix(in oklch, var(--color-accent), transparent 28%);
+      z-index: -1;
+    }
     .concept-image {
-      width: 100%; border-radius: var(--radius-lg);
+      width: 100%; border-radius: .45rem;
       object-fit: cover; aspect-ratio: 4/5;
-      box-shadow: 0 22px 64px rgba(96, 54, 22, .14);
+      box-shadow: 0 22px 64px rgba(96, 54, 22, .12);
     }
     .concept-badge {
-      position: absolute; bottom: var(--space-6); left: calc(-1 * var(--space-6));
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
+      position: absolute; bottom: var(--space-6); left: calc(-1 * var(--space-4));
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border: 1px solid color-mix(in oklch, var(--color-cta), transparent 35%);
+      border-radius: .7rem;
       padding: var(--space-4) var(--space-6);
       display: flex; flex-direction: column;
       box-shadow: var(--shadow-lg);
@@ -72,27 +90,37 @@ import { BusinessConfigService } from '../../../../core/services/business-config
     @media (max-width: 768px) { .concept-badge { left: var(--space-4); } }
     .concept-badge-number {
       font-family: var(--font-display); font-size: var(--text-2xl);
-      color: var(--color-primary); line-height: 1;
+      color: var(--color-cta); line-height: 1;
     }
     .concept-badge-label {
       font-size: var(--text-xs); letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--color-text-muted);
+      text-transform: uppercase; color: color-mix(in oklch, var(--color-text-inverse), transparent 16%);
       margin-top: var(--space-1);
     }
     .concept-text { display: flex; flex-direction: column; gap: var(--space-4); max-width: 35rem; }
+    .concept-text .text-h2 { max-width: 11ch; }
     .concept-stats {
-      display: flex; gap: var(--space-8);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .75rem;
       padding-top: var(--space-6);
-      border-top: 1px solid var(--color-divider);
       margin-top: var(--space-4);
     }
     @media (max-width: 767px) {
       .concept-text { text-align: center; margin-inline: auto; }
       .rule-brand { margin-inline: auto; }
-      .concept-stats { justify-content: center; flex-wrap: wrap; gap: var(--space-5); }
+      .concept-text .text-h2 { max-width: none; }
+      .concept-stats { grid-template-columns: 1fr; gap: .65rem; }
       .stat { align-items: center; }
     }
-    .stat { display: flex; flex-direction: column; gap: var(--space-1); }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding: .95rem;
+      border-top: 2px solid color-mix(in oklch, var(--color-primary), transparent 50%);
+      background: color-mix(in oklch, var(--color-surface), transparent 16%);
+    }
     .stat-num {
       font-family: var(--font-display); font-size: var(--text-xl);
       color: var(--color-primary); font-weight: 600;

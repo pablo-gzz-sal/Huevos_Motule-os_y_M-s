@@ -18,6 +18,7 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="menu-topbar">
+          <p class="menu-step">1. Elige antojo</p>
           <div class="cat-tabs" role="tablist" [attr.aria-label]="cfg.config().uiCopy.menuPageUi.categoryNavAriaLabel">
             @for (cat of categories(); track cat.id) {
               <button class="cat-tab" role="tab"
@@ -52,6 +53,7 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="menu-cta-row">
+          <p class="menu-step">2. Revisa el menu completo o escribe directo</p>
           <a routerLink="/menu" class="btn btn-outline-brand">{{ cfg.config().sectionCopy.menuHighlights.fullMenuLabel }}</a>
           <button class="btn btn-primary" (click)="reservationSvc.open()">{{ cfg.cta().reservationLabel }}</button>
         </div>
@@ -61,33 +63,46 @@ import { RouterLink } from '@angular/router';
   styles: [`
     .menu-section {
       background:
-        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 2%), color-mix(in oklch, var(--color-bg), transparent 6%)),
-        radial-gradient(circle at 85% 10%, color-mix(in oklch, var(--color-accent), transparent 74%), transparent 28rem);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 18px 60px rgba(96, 54, 22, .07);
+        linear-gradient(180deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 18%));
+      border-block: 1px solid color-mix(in oklch, var(--color-border), transparent 18%);
     }
     .menu-shell { max-width: 1060px; }
     .menu-header { text-align: center; margin: 0 auto clamp(2rem, 4vw, 3rem); max-width: 48rem; }
     .section-subtitle { color: var(--color-text-muted); max-width: 42rem; margin: .75rem auto 0; }
     .menu-topbar { display: grid; gap: 1rem; margin: 0 auto clamp(1.75rem, 3vw, 2.5rem); max-width: 980px; }
+    .menu-step {
+      justify-self: center;
+      font-size: .78rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      padding: .3rem .65rem;
+      border: 1px solid color-mix(in oklch, var(--color-primary), transparent 66%);
+      border-radius: 999px;
+      background: color-mix(in oklch, var(--color-cta), transparent 86%);
+    }
     .cat-tabs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: clamp(.9rem, 1.8vw, 1.2rem);
+      gap: .65rem;
+      padding: .5rem;
+      border-radius: 1rem;
+      background: color-mix(in oklch, var(--color-surface-2), transparent 18%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 18%);
     }
     .cat-tab {
-      text-align: center;
-      padding: 1.1rem 1.15rem 1.05rem;
-      border-radius: .85rem;
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
-      background: color-mix(in oklch, var(--color-surface), transparent 16%);
-      box-shadow: 0 10px 24px rgba(96, 54, 22, .06);
+      text-align: left;
+      padding: .95rem 1rem;
+      border-radius: .7rem;
+      border: 1px solid transparent;
+      background: transparent;
       transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
     }
     .cat-tab:hover { transform: translateY(-2px); }
     .cat-tab.active {
-      background: color-mix(in oklch, var(--color-surface-2), transparent 8%);
-      border-color: color-mix(in oklch, var(--color-primary), transparent 58%);
-      box-shadow: 0 14px 32px rgba(96, 54, 22, .09);
+      background: var(--color-surface);
+      border-color: color-mix(in oklch, var(--color-primary), transparent 62%);
+      box-shadow: 0 12px 28px rgba(57, 34, 15, .08);
     }
     .cat-label { display:block; font-weight:700; color: var(--color-text); }
     .cat-tab small { display:block; margin-top:.3rem; color: var(--color-text-muted); font-size:.8rem; }
@@ -100,7 +115,7 @@ import { RouterLink } from '@angular/router';
     }
     .menu-card {
       overflow: hidden;
-      border-radius: .95rem;
+      border-radius: .65rem;
       background: color-mix(in oklch, var(--color-surface), transparent 4%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 35%);
       box-shadow: 0 18px 44px rgba(96, 54, 22, .09);
@@ -121,7 +136,8 @@ import { RouterLink } from '@angular/router';
     .menu-item-name { font-family: var(--font-display); font-size: 1.45rem; line-height:1.05; color: var(--color-text); }
     .menu-item-desc { margin-top:.6rem; color: var(--color-text-muted); font-size:.95rem; line-height:1.6; }
     .menu-item-price { color: var(--color-primary); font-weight:700; white-space:nowrap; }
-    .menu-cta-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:clamp(2.25rem, 4vw, 3.25rem); }
+    .menu-cta-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; margin-top:clamp(2.25rem, 4vw, 3.25rem); }
+    .menu-cta-row .menu-step { flex-basis: 100%; justify-self: auto; }
     @media (max-width: 768px) {
       .menu-header { text-align:center; }
       .cat-tabs { grid-template-columns: 1fr 1fr; }
