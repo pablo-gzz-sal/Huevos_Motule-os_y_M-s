@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { LUUN_BRUNCH_COFFEE_CONFIG } from '../app/core/config/clients/luun-brunch-coffee.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: LUUN_BRUNCH_COFFEE_CONFIG,
 };
+
