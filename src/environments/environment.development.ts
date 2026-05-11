@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { IDILIO_FOLKLORE_CONFIG } from '../app/core/config/clients/idilio-folklore-cervecero.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: IDILIO_FOLKLORE_CONFIG,
 };
+
