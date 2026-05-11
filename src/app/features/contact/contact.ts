@@ -39,9 +39,8 @@ import { SocialLinksComponent } from '../../shared/components/social-links/socia
   styles: [`
     .contact-page {
       background:
-        linear-gradient(180deg, var(--color-bg), color-mix(in oklch, var(--color-surface), transparent 5%)),
-        radial-gradient(circle at 18% 12%, rgba(176,128,78,.12), transparent 24rem);
-      box-shadow: 0 18px 60px rgba(79,57,37,.06);
+        linear-gradient(180deg, var(--color-bg), color-mix(in oklch, var(--color-surface), transparent 2%));
+      box-shadow: 0 18px 60px rgba(31,24,16,.07);
     }
     .contact-shell { display:grid; gap: clamp(2rem, 4vw, 3.5rem); max-width: 980px; }
     .contact-intro { max-width: 42rem; margin-inline:auto; text-align:center; display: grid; gap: .8rem; }
@@ -52,8 +51,8 @@ import { SocialLinksComponent } from '../../shared/components/social-links/socia
       text-align:center;
       padding: clamp(1.35rem, 2.4vw, 1.9rem);
       border-radius:var(--radius-lg);
-      background: linear-gradient(150deg, rgba(255,255,255,.9), rgba(255,250,244,.7));
-      border:1px solid var(--color-border);
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
+      border:1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: var(--shadow-sm);
       text-decoration: none;
       transition: transform var(--transition-ui), box-shadow var(--transition-ui);
