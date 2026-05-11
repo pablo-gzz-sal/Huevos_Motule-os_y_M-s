@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { EH_VOILA_VALLADOLID_CONFIG } from '../app/core/config/clients/eh-voila-valladolid.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: EH_VOILA_VALLADOLID_CONFIG,
 };
+
