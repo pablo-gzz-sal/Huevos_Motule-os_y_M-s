@@ -23,8 +23,8 @@ import { LocationConfig } from '../../../core/config/business.config';
     .location-card {
       padding: 1.2rem;
       border-radius: var(--radius-lg);
-      background: linear-gradient(150deg, rgba(255,255,255,.9), rgba(255,250,244,.7));
-      border: 1px solid color-mix(in oklch, var(--color-border), transparent 20%);
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: var(--shadow-md);
       max-width: 34rem;
       margin-inline: auto;
@@ -37,7 +37,7 @@ import { LocationConfig } from '../../../core/config/business.config';
       margin-bottom: .8rem;
     }
     .hours-list { display:grid; gap:.6rem; }
-    .hours-row { display:flex; justify-content:space-between; gap:1rem; color: var(--color-text-muted); }
+    .hours-row { display:flex; justify-content:space-between; gap:1rem; color: var(--color-text-muted); padding-block: .1rem; }
     .hours-row strong { color: var(--color-text); }
     .hours-row.closed { opacity: .62; }
     @media (max-width: 420px) {
