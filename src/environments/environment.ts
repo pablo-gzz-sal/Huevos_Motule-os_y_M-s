@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { CARDINAL_RESTAURANTE_CENTRO_SUR_CONFIG } from '../app/core/config/clients/cardinal-restaurante-centro-sur.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: CARDINAL_RESTAURANTE_CENTRO_SUR_CONFIG,
 };
+
