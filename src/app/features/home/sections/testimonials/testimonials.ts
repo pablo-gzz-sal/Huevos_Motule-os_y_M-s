@@ -42,7 +42,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       margin-inline: auto;
     }
     .testimonial-card {
-      padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: .95rem;
+      padding: clamp(1.45rem, 2.5vw, 2rem); border-radius: var(--radius-lg);
       background: linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 0%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
       border:1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: 0 16px 40px rgba(31, 24, 16, .1);

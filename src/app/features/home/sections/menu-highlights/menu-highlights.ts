@@ -86,14 +86,14 @@ import { RouterLink } from '@angular/router';
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: .65rem;
       padding: .5rem;
-      border-radius: 1rem;
+      border-radius: var(--radius-xl);
       background: color-mix(in oklch, var(--color-surface-2), transparent 4%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 4%);
     }
     .cat-tab {
       text-align: left;
       padding: .95rem 1rem;
-      border-radius: .7rem;
+      border-radius: var(--radius-md);
       border: 1px solid transparent;
       background: transparent;
       transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
@@ -115,7 +115,7 @@ import { RouterLink } from '@angular/router';
     }
     .menu-card {
       overflow: hidden;
-      border-radius: .65rem;
+      border-radius: var(--radius-lg);
       background: color-mix(in oklch, var(--color-surface), transparent 0%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: 0 18px 44px rgba(31, 24, 16, .1);

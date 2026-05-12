@@ -36,7 +36,11 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
           <div class="mobile-sheet-inner">
             <div class="mobile-sheet-head">
               <span class="eyebrow">{{ cfg.config().uiCopy.mobileMenu.eyebrow }}</span>
-              <button class="mobile-close" (click)="toggleMenu()" [attr.aria-label]="cfg.config().uiCopy.mobileMenu.closeAriaLabel">x</button>
+              <button class="mobile-close" (click)="toggleMenu()" [attr.aria-label]="cfg.config().uiCopy.mobileMenu.closeAriaLabel">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
             </div>
             <a routerLink="/" class="mobile-link" (click)="toggleMenu()">{{ cfg.navigation().homeLabel }}</a>
             <a routerLink="/menu" class="mobile-link" (click)="toggleMenu()">{{ cfg.navigation().menuLabel }}</a>
@@ -55,14 +59,14 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       z-index: 50;
       width: min(calc(100% - clamp(1rem, 5vw, 4rem)), var(--page-rail));
       margin: 0 auto;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-xl);
       backdrop-filter: blur(18px) saturate(1.08);
       background: color-mix(in oklch, var(--color-surface), transparent 4%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: 0 18px 48px rgba(31, 24, 16, .14);
     }
     .nav-shell { display:flex; align-items:center; justify-content:space-between; min-height: 4.4rem; gap: 1rem; padding-inline: clamp(.85rem, 2vw, 1.4rem); }
-    .brand-logo { display:flex; align-items:center; gap:.75rem; color: var(--color-text); text-decoration:none; }
+    .brand-logo { display:flex; align-items:center; gap:.75rem; min-width: 0; color: var(--color-text); text-decoration:none; }
     .brand-mark {
       width:2.35rem; height:2.35rem; display:grid; place-items:center; border-radius:999px;
       background: radial-gradient(circle at 38% 32%, var(--color-accent), var(--color-primary) 72%);
@@ -70,7 +74,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 10px 24px rgba(96, 54, 22, .16);
       font-weight: 800;
     }
-    .brand-name { font-family: var(--font-display); font-size: 1.5rem; }
+    .brand-name { font-family: var(--font-display); font-size: 1.5rem; line-height: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .nav-desktop { display:flex; align-items:center; gap:1.2rem; }
     .nav-link { color: var(--color-text-muted); text-decoration:none; font-weight:800; }
     .nav-link.active { color: var(--color-text); }
@@ -96,15 +100,15 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     .mobile-sheet-inner {
       width:min(100%, 34rem);
       margin-inline:auto;
-      display:grid; gap:.7rem; padding:1rem; border-radius:1.4rem;
+      display:grid; gap:.7rem; padding:1rem; border-radius:var(--radius-xl);
       background: color-mix(in oklch, var(--color-surface), transparent 2%);
       border:1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: 0 22px 54px rgba(31,24,16,.16);
     }
     .mobile-sheet-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:.25rem; }
-    .mobile-close { width:2.3rem; height:2.3rem; border-radius:999px; background: var(--color-surface-2); color: var(--color-text); font-size:1.4rem; }
+    .mobile-close { width:2.3rem; height:2.3rem; border-radius:999px; background: var(--color-surface-2); color: var(--color-text); display:grid; place-items:center; }
     .mobile-link {
-      padding: 1rem 1rem; border-radius: 1rem; text-decoration:none;
+      padding: 1rem 1rem; border-radius: var(--radius-md); text-decoration:none;
       color: var(--color-text); background: color-mix(in oklch, var(--color-surface-2), transparent 6%); font-weight:800;
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
     }
@@ -120,7 +124,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     @media (max-width: 520px) {
       .nav-shell { min-height: 4rem; padding-inline: .75rem; }
       .brand-logo { gap: .55rem; min-width: 0; }
-      .brand-name { font-size: 1.08rem; white-space: nowrap; }
+      .brand-name { max-width: calc(100vw - 7.2rem); font-size: 1.08rem; white-space: nowrap; }
       .brand-mark { width: 2.15rem; height: 2.15rem; font-size: .9rem; }
       .nav-toggle { position: absolute; right: .75rem; top: 50%; transform: translateY(-50%); width: 2.55rem; height: 2.55rem; flex: 0 0 auto; }
     }

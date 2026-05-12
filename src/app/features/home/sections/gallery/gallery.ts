@@ -25,7 +25,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
 
         <div class="gallery-grid" #galleryGrid>
           @for (item of filteredItems(); track item.id) {
-            <figure class="gallery-item" (click)="openLightbox(item)">
+            <figure class="gallery-item" tabindex="0" role="button" (click)="openLightbox(item)" (keydown.enter)="openLightbox(item)" (keydown.space)="openLightbox(item); $event.preventDefault()">
               <img [src]="item.src" [alt]="item.alt" width="600" height="450" loading="lazy" class="gallery-img aspect-menu" />
               <figcaption class="gallery-caption">
                 <span>{{ item.caption }}</span>
@@ -37,7 +37,11 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
 
       @if (lightboxItem()) {
         <div class="gallery-lightbox" (click)="closeLightbox()" role="dialog" aria-modal="true" [attr.aria-label]="lightboxItem()?.alt">
-          <button class="lightbox-close" (click)="closeLightbox()" aria-label="Cerrar">x</button>
+          <button class="lightbox-close" (click)="closeLightbox()" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
           <img [src]="lightboxItem()?.src" [alt]="lightboxItem()?.alt" class="lightbox-img" (click)="$event.stopPropagation()" />
           @if (lightboxItem()?.caption) {
             <p class="lightbox-caption">{{ lightboxItem()?.caption }}</p>
@@ -57,7 +61,9 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
     .filter-btn {
       padding:.75rem 1.25rem; border-radius:999px; background: color-mix(in oklch, var(--color-surface), transparent 0%);
       border:1px solid color-mix(in oklch, var(--color-border), transparent 20%); color: var(--color-text-muted); font-weight:700;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
     }
+    .filter-btn:hover { border-color: color-mix(in oklch, var(--color-primary), transparent 45%); color: var(--color-primary); }
     .filter-btn.active { background: var(--color-primary); color:white; border-color: var(--color-primary); }
     .gallery-grid {
       display:grid;
@@ -70,7 +76,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
       grid-column: span 4;
       position:relative;
       overflow:hidden;
-      border-radius: .95rem;
+      border-radius: var(--radius-lg);
       cursor:pointer;
       min-height: 18rem;
       box-shadow: 0 18px 44px rgba(31, 24, 16, .12);
@@ -85,7 +91,7 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
     .gallery-item:hover .gallery-img { transform: scale(1.05); }
     .gallery-caption {
       position:absolute; left:1rem; right:1rem; bottom:1rem;
-      padding:.8rem 1rem; border-radius: 1rem;
+      padding:.8rem 1rem; border-radius: var(--radius-md);
       background: color-mix(in oklch, var(--color-surface), transparent 4%); backdrop-filter: blur(8px);
       color: var(--color-text); font-weight:700;
     }
@@ -95,12 +101,14 @@ type GalleryCategory = 'all' | 'food' | 'drinks' | 'interior' | 'events';
       background: rgba(26,20,16,.72);
       padding: 1.5rem;
     }
-    .lightbox-img { max-width:min(92vw, 980px); max-height:78vh; border-radius:1.25rem; box-shadow:0 24px 60px rgba(0,0,0,.28); }
+    .lightbox-img { max-width:min(92vw, 980px); max-height:78vh; border-radius:var(--radius-xl); box-shadow:0 24px 60px rgba(0,0,0,.28); }
     .lightbox-caption { color:white; margin-top:1rem; text-align:center; }
     .lightbox-close {
       position:absolute; top:1rem; right:1rem; width:2.5rem; height:2.5rem; border-radius:999px;
-      background: rgba(255,255,255,.18); color:white; font-size:1.6rem; line-height:1;
+      background: rgba(255,255,255,.18); color:white; display:grid; place-items:center;
+      transition: background .2s ease, transform .2s ease;
     }
+    .lightbox-close:hover { background: rgba(255,255,255,.28); transform: rotate(90deg); }
     @media (max-width: 768px) {
       .gallery-header { text-align:center; }
       .gallery-grid { grid-template-columns: 1fr; }

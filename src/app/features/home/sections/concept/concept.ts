@@ -72,7 +72,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       z-index: -1;
     }
     .concept-image {
-      width: 100%; border-radius: .45rem;
+      width: 100%; border-radius: var(--radius-md);
       object-fit: cover; aspect-ratio: 4/5;
       box-shadow: 0 22px 64px rgba(96, 54, 22, .12);
     }
@@ -81,7 +81,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       background: var(--color-primary);
       color: var(--color-text-inverse);
       border: 1px solid color-mix(in oklch, var(--color-cta), transparent 35%);
-      border-radius: .7rem;
+      border-radius: var(--radius-md);
       padding: var(--space-4) var(--space-6);
       display: flex; flex-direction: column;
       box-shadow: var(--shadow-lg);
@@ -121,7 +121,7 @@ import { BusinessConfigService } from '../../../../core/services/business-config
       border-top: 2px solid color-mix(in oklch, var(--color-primary), transparent 50%);
       background: color-mix(in oklch, var(--color-surface), transparent 0%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
-      border-radius: .8rem;
+      border-radius: var(--radius-lg);
     }
     .stat-num {
       font-family: var(--font-display); font-size: var(--text-xl);

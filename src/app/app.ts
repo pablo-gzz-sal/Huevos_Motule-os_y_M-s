@@ -72,7 +72,7 @@ import { StickyCTAComponent } from './shared/components/sticky-cta/sticky-cta';
       gap: .45rem;
       text-align: center;
       padding: clamp(1.35rem, 4vw, 2rem);
-      border-radius: 1.25rem;
+      border-radius: var(--radius-xl);
       background: color-mix(in oklch, var(--color-surface), transparent 2%);
       border: 1px solid color-mix(in oklch, var(--color-border), transparent 10%);
       box-shadow: 0 30px 90px rgba(31, 24, 16, .16);

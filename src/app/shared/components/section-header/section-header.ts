@@ -17,8 +17,8 @@ import { Component, input } from '@angular/core';
   styles: [`
     .section-header {
       max-width: 48rem;
-      margin: 0 auto 2rem;
-      text-align: center;
+      margin: 0 0 2rem;
+      text-align: left;
     }
     .section-header.centered {
       text-align: center;

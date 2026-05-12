@@ -62,7 +62,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
   `,
   styles: [`
     :host{display:block}
-    .hero{position:relative;min-height:calc(100svh - 1rem);width:min(calc(100% - clamp(.8rem,3vw,2rem)),1360px);margin:clamp(.55rem,1vw,.9rem) auto clamp(1.2rem,2.5vw,2rem);display:grid;align-items:center;overflow:clip;border-radius:clamp(1rem,2vw,1.65rem);background:var(--color-primary);box-shadow:0 34px 100px rgba(31,24,16,.22)}
+    .hero{position:relative;min-height:calc(100svh - 1rem);width:min(calc(100% - clamp(.8rem,3vw,2rem)),1360px);margin:clamp(.55rem,1vw,.9rem) auto clamp(1.2rem,2.5vw,2rem);display:grid;align-items:center;overflow:clip;border-radius:clamp(.85rem,1.5vw,1.25rem);background:var(--color-primary);box-shadow:0 34px 100px rgba(31,24,16,.22)}
     .hero-media {
       position: absolute;
       inset: 0;
@@ -139,7 +139,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
     .spotlight-card {
       max-width: 22rem;
       padding: 1.35rem;
-      border-radius: .95rem;
+      border-radius: var(--radius-lg);
       background:
         linear-gradient(160deg, color-mix(in oklch, var(--color-surface), transparent 1%), color-mix(in oklch, var(--color-surface-2), transparent 8%));
       box-shadow: 0 24px 62px rgba(0, 0, 0, .2);
@@ -169,25 +169,6 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       font-size: .86rem;
       font-weight: 800;
     }
-    .hero-service-strip { position: absolute; left: clamp(1rem, 3vw, 2.25rem); right: clamp(1rem, 3vw, 2.25rem); bottom: 1.15rem; z-index: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: .95rem; overflow: hidden; background: color-mix(in oklch, var(--color-surface), transparent 4%); border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%); box-shadow: 0 20px 54px rgba(0,0,0,.22); backdrop-filter: blur(14px); }
-    .service-item {
-      padding: .95rem 1rem;
-      display: grid;
-      gap: .2rem;
-      border-right: 1px solid color-mix(in oklch, var(--color-border), transparent 12%);
-    }
-    .service-item:last-child { border-right: 0; }
-    .service-item span {
-      color: var(--color-text-muted);
-      font-size: .78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .service-item strong {
-      color: var(--color-text);
-      font-size: .96rem;
-      line-height: 1.2;
-    }
     @media (max-width: 900px) {
       .hero-shell {
         grid-template-columns: 1fr;
@@ -196,7 +177,7 @@ import { GsapService } from '../../../../core/animations/gsap.service';
         overflow: hidden;
       }
       .hero {
-        min-height: calc(92svh - 1.2rem);
+        min-height: auto;
         width: min(calc(100% - 1rem), var(--page-rail));
         margin-top: .6rem;
       }
@@ -210,9 +191,6 @@ import { GsapService } from '../../../../core/animations/gsap.service';
       .hero-actions{flex-direction:column;align-items:stretch;max-width:21rem}
       .hero-actions .btn{width:100%;padding-inline:.9rem}
       .hero-spotlight {
-        display: none;
-      }
-      .hero-service-strip {
         display: none;
       }
     }

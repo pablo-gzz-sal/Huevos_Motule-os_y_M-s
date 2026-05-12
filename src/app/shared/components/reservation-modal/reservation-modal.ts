@@ -19,7 +19,11 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
                 <h2 class="text-h3">{{ cfg.config().reservation.modalTitle }}</h2>
                 <p class="modal-copy">{{ cfg.config().reservation.modalDescription }}</p>
               </div>
-              <button class="modal-close" type="button" (click)="svc.close()" [attr.aria-label]="cfg.config().uiCopy.reservationUi.closeAriaLabel">x</button>
+              <button class="modal-close" type="button" (click)="svc.close()" [attr.aria-label]="cfg.config().uiCopy.reservationUi.closeAriaLabel">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
             </div>
 
             <form class="reservation-form" (ngSubmit)="submit()" #f="ngForm">
@@ -105,9 +109,9 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
       overflow: auto;
       pointer-events: auto;
       padding: 1.35rem;
-      border-radius: 1.35rem;
-      background: linear-gradient(150deg, rgba(255,252,248,.97), rgba(255,255,255,.92));
-      border: 1px solid rgba(92,64,51,.08);
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(150deg, color-mix(in oklch, var(--color-surface), transparent 1%), color-mix(in oklch, var(--color-surface-2), transparent 6%));
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
       box-shadow: 0 30px 80px rgba(56, 38, 23, 0.18);
       animation: modalIn .34s cubic-bezier(0.16,1,0.3,1);
     }
@@ -124,8 +128,11 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     }
     .modal-close {
       width: 2.5rem; height: 2.5rem; border-radius: 999px;
-      background: rgba(255,255,255,.82); border: 1px solid rgba(92,64,51,.08);
-      color: var(--color-ink-900); font-size: 1.4rem; line-height: 1;
+      background: color-mix(in oklch, var(--color-surface), transparent 8%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      color: var(--color-text);
+      display: grid;
+      place-items: center;
       transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
     }
     .modal-close:hover { transform: rotate(90deg) scale(1.04); box-shadow: 0 10px 24px rgba(79,57,37,.08); }
@@ -139,8 +146,10 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     }
     .input {
       min-height: 3.15rem; padding: .9rem 1rem;
-      border-radius: 1rem; background: rgba(255,255,255,.74);
-      border: 1px solid rgba(92,64,51,.08); outline: none;
+      border-radius: var(--radius-md);
+      background: color-mix(in oklch, var(--color-surface), white 10%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      outline: none;
       transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
     }
     .input:focus {
@@ -163,8 +172,10 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     .success-state p { color: var(--color-text-muted); }
     .wa-preview {
       width: 100%; margin-top: .25rem; text-align: left;
-      background: rgba(255,255,255,.8); border: 1px solid rgba(92,64,51,.08);
-      border-radius: 1.2rem; padding: 1rem;
+      background: color-mix(in oklch, var(--color-surface), transparent 4%);
+      border: 1px solid color-mix(in oklch, var(--color-border), transparent 8%);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
     }
     .wa-preview pre {
       font-size: var(--text-sm); white-space: pre-wrap; line-height: 1.65;
@@ -173,7 +184,7 @@ import { BusinessConfigService } from '../../../core/services/business-config.se
     .success-actions { display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; }
     @media (max-width: 520px) {
       .modal-shell { padding: .5rem; align-items: end; }
-      .modal { border-radius: 1.1rem; padding: 1rem; max-height: 92vh; }
+      .modal { border-radius: var(--radius-xl); padding: 1rem; max-height: 92vh; }
       .modal-header { align-items:flex-start; }
       .form-actions,
       .success-actions { flex-direction: column-reverse; }
