@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { LA_COMPANIA_CAFE_QUERETARO_CONFIG } from '../app/core/config/clients/la-compania-cafe-queretaro.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: LA_COMPANIA_CAFE_QUERETARO_CONFIG,
 };
+
