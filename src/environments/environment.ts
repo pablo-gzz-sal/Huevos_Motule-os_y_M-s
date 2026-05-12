@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { MANTEQUILLA_CAFE_BRUNCH_QUERETARO_CONFIG } from '../app/core/config/clients/mantequilla-cafe-brunch-queretaro.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: MANTEQUILLA_CAFE_BRUNCH_QUERETARO_CONFIG,
 };
