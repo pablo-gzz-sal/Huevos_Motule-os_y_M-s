@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { QUERENA_EATERY_BAR_CENTRO_SUR_CONFIG } from '../app/core/config/clients/querena-eatery-bar-centro-sur.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: QUERENA_EATERY_BAR_CENTRO_SUR_CONFIG,
 };
+
