@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { CASA_BALVANERA_QUERETARO_CONFIG } from '../app/core/config/clients/casa-balvanera-queretaro.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: CASA_BALVANERA_QUERETARO_CONFIG,
 };
