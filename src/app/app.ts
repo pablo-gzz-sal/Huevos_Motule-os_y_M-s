@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { NavComponent } from './shared/components/nav/nav';
 import { FooterComponent } from './shared/components/footer/footer';
 import { ReservationModalComponent } from './shared/components/reservation-modal/reservation-modal';
@@ -119,9 +120,19 @@ import { StickyCTAComponent } from './shared/components/sticky-cta/sticky-cta';
 export class AppComponent {
   readonly cfg = inject(BusinessConfigService);
   private readonly router = inject(Router);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
   readonly loading = signal(true);
 
   constructor() {
+    const seo = this.cfg.config().seo;
+    this.title.setTitle(seo.title);
+    this.meta.updateTag({ name: 'description', content: seo.description });
+    this.meta.updateTag({ name: 'keywords', content: seo.keywords.join(', ') });
+    this.meta.updateTag({ property: 'og:title', content: seo.title });
+    this.meta.updateTag({ property: 'og:description', content: seo.description });
+    this.meta.updateTag({ property: 'og:image', content: seo.ogImage });
+
     const finishInitialLoad = () => this.finishLoading(520);
 
     if (document.readyState === 'complete') {

@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { HUEVOS_MOTULENOS_CONFIG } from '../app/core/config/clients/huevos-motulenos.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: HUEVOS_MOTULENOS_CONFIG,
 };
