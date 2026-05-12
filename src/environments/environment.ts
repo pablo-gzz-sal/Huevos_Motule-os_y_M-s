@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { TIMOTEO_COFFEE_HOUSE_QUERETARO_CONFIG } from '../app/core/config/clients/timoteo-coffee-house-queretaro.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: TIMOTEO_COFFEE_HOUSE_QUERETARO_CONFIG,
 };
