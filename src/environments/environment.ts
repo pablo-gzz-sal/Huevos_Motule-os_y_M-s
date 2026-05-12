@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { CAROLA_TERRAZA_CENTRO_HISTORICO_CONFIG } from '../app/core/config/clients/carola-terraza-centro-historico.config';
 
 export const environment = {
   production: true,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: CAROLA_TERRAZA_CENTRO_HISTORICO_CONFIG,
 };
