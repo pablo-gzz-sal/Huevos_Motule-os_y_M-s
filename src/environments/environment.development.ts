@@ -1,6 +1,6 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+import { RESTAURANTE_1810_CENTRO_HISTORICO_CONFIG } from '../app/core/config/clients/restaurante-1810-centro-historico.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: RESTAURANTE_1810_CENTRO_HISTORICO_CONFIG,
 };
