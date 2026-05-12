@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { ANDADOR_58_QUERETARO_CONFIG } from '../app/core/config/clients/andador-58-queretaro.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: ANDADOR_58_QUERETARO_CONFIG,
 };
+
