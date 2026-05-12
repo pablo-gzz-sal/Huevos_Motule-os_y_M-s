@@ -1,6 +1,7 @@
-import { COFFEE_ST_FITZ_CONFIG } from '../app/core/config/clients/coffee-st-fitz.config';
+﻿import { BRUMA_CAFE_BRUNCH_QRO_CONFIG } from '../app/core/config/clients/bruma-cafe-brunch-qro.config';
 
 export const environment = {
   production: false,
-  activeBusinessConfig: COFFEE_ST_FITZ_CONFIG,
+  activeBusinessConfig: BRUMA_CAFE_BRUNCH_QRO_CONFIG,
 };
+
